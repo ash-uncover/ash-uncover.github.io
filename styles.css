@@ -1,0 +1,69 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body {
+    position: relative;
+}
+.main {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.main .background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.main .background .left {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 50%;
+    background: blue;
+}
+
+.main .background .left .arrows {
+    font-size: 0;
+    transform: skew(0, 35deg);
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    text-align: right;
+}
+.main .background .left .arrows + .arrows {
+    margin-top: 100px;
+    position: relative;
+}
+.main .background .left .arrows + .arrows + .arrows {
+    margin-top: 50px;
+}
+.main .background .left .arrows .arrow {
+    height: 23px;
+    background: white;
+    border: 1px solid white;
+    display: inline-block;
+}
+.main .background .left .arrows .arrow.small {
+    width: 150px;
+}
+.main .background .left .arrows .arrow.big {
+    width: 350px;
+}
+
+
+.main .background .right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    background: red;
+}
