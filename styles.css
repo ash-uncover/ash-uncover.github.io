@@ -52,10 +52,12 @@ body {
     display: inline-block;
 }
 .main .background .left .arrows .arrow.small {
-    width: 150px;
+    width: 25%;
+    max-width: 150px;
 }
 .main .background .left .arrows .arrow.big {
-    width: 350px;
+    width: 75%;
+    max-width: 450px;
 }
 
 
