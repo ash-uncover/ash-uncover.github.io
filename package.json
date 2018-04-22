@@ -6,13 +6,23 @@
   },
   "author": "aSH <ash.uncover@gmail.com>",
   "license": "ISC",
+  "scripts": {
+    "lint": "eslint ./src/**/*.js*",
+    "build": "webpack --mode production",
+    "watch": "webpack-dev-server --progress --colors --history-api-fallback --mode development --output-public-path=/dist/"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-import-directory": "^1.0.3",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-react": "^7.7.0",
     "node-sass": "^4.8.3",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
