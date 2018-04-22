@@ -1,38 +1,40 @@
 .background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .left {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 50%;
+        background: blue;
+        
+        .arrows {
+            font-size: 0;
+            transform: skew(0, 35deg);
+            position: absolute;
+            top: 40%;
+            left: 0;
+            right: 0;
+            text-align: right;
+        }
+    }
+
+    .right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+        background: red;
+    }
+
 }
 
-.main {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-.main .background {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-.main .background .left {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 50%;
-    background: blue;
-}
-
-.main .background .left .arrows {
-    font-size: 0;
-    transform: skew(0, 35deg);
-    position: absolute;
-    top: 40%;
-    left: 0;
-    right: 0;
-    text-align: right;
-}
 .main .background .left .arrows + .arrows {
     margin-top: 100px;
     position: relative;
@@ -56,11 +58,3 @@
 }
 
 
-.main .background .right {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    right: 0;
-    background: red;
-}
