@@ -10,7 +10,7 @@ class App extends React.Component {
     render() {
         return (
             <div className='app'>
-                <ComponentRegistry.Background />
+                <ComponentRegistry.Grid size={48} />
             </div>
         )
     }

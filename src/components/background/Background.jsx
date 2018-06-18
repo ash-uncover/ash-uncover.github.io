@@ -9,19 +9,19 @@ class Background extends React.Component {
 
     render() {
         return (
-            <div class='background'>
-                <div class='left'>
-                    <div class='arrows'>
-                        <div class='arrow small'></div><div class='arrow big'></div>
+            <div className='background'>
+                <div className='left'>
+                    <div className='arrows'>
+                        <div className='arrow small'></div><div className='arrow big'></div>
                     </div>
-                    <div class='arrows'>
-                        <div class='arrow small'></div><div class='arrow big'></div>
+                    <div className='arrows'>
+                        <div className='arrow small'></div><div className='arrow big'></div>
                     </div>
-                    <div class='arrows'>
-                        <div class='arrow small'></div><div class='arrow big'></div>
+                    <div className='arrows'>
+                        <div className='arrow small'></div><div className='arrow big'></div>
                     </div>
                 </div>
-                <div class='right'>
+                <div className='right'>
                 </div>
             </div>
         )
