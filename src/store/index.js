@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from 'redux'
 
-import app from 'reducers/ReducerApp'
-import model from 'reducers/ReducerModel'
+import app from 'store/ReducerApp'
+import model from 'store/ReducerModel'
 
 export const reducer = combineReducers({
     app,
