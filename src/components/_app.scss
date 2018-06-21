@@ -1,7 +1,139 @@
+@import "../_custom.scss";
+
+$toolbar-height: 3rem;
+
+$menu-width: 10rem;
+$menu-item-size: 5rem;
+
 .app {
-	position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;    
+    height: 100%;
+    position: relative;
+
+    .app-toolbar {
+        position: absolute;
+        top: 0;
+        height: $toolbar-height;
+        left: 0;
+        right: 0;
+        
+        background: #CCD;
+
+        display: flex;
+        align-items: center;
+
+        .start {
+            margin-right: auto;
+            padding: 0.5rem;
+        }
+        .end {
+            margin-left: auto;
+        }
+
+        .app-toolbar-item {
+            display: block;
+            color: black;
+        }
+    }
+
+    .app-home {
+        position: absolute;
+        top: $toolbar-height;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: $primary-background;
+
+        .app-home-item {
+            margin: 2rem;
+            height: 10rem;
+            width: 10rem;
+
+            background: $primary-highlight-background;
+            border: 0;
+            border-radius: 1rem;
+            outline: none;
+            padding: 2rem 0;
+
+            .icon {
+                display: block;
+                color: $primary-highlight-color;
+                font-size: 4rem;
+            }
+            .text {
+                display: block;
+                color: $primary-highlight-color;
+                text-transform: uppercase;
+                line-height: 4rem;
+            }
+            &:hover {
+                background: $primary-select-background;
+                .icon {
+                    color: $primary-select-color;
+                }
+                .text {
+                    color: $primary-select-color;
+                }
+            }
+        }
+    }
+
+    .app-menu {
+        padding-top: 1rem;
+        position: absolute;
+        top: $toolbar-height;
+        bottom: 0;
+        left: 0;
+        width: $menu-width;
+        
+        background: $primary-background;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .app-menu-item {
+            color: $primary-color;
+            
+            margin: 1rem;
+            height: $menu-item-size;
+            width: $menu-item-size;
+            
+            border-radius: 50%;
+            background: $primary-highlight-background;
+            transition: border-radius 0.2s;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            .icon {
+                font-size: 2rem;
+            }
+            &.selected,
+            &:hover {
+                border-radius: 0.5rem;
+                background: $primary-select-background;
+            }
+            &.selected {
+                .icon {
+                    color: $primary-select-color;
+                }
+            }
+        }
+    }
+
+    .app-content {
+        position: absolute;
+        top: $toolbar-height;
+        bottom: 0;
+        left: $menu-width;
+        right: 0;
+    }
 }

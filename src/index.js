@@ -1,28 +1,21 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
-// Load prerequisite
 import 'actions'
-import components from './components/**/*'
-//import containers from './containers/*'
-//import services from './services/*'
-import reducer from 'reducers'
+import store from 'store'
 
-import ComponentRegistry from 'core/ComponentRegistry'
-import ServiceRegistry from 'core/ServiceRegistry'
+import AppRootContainer from 'components/AppRootContainer'
 
-const store = createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+import 'bootstrap'
+import './_custom.scss'
+
 
 render(
     <BrowserRouter>
         <Provider store={store}>
-            <ComponentRegistry.App />
+            <AppRootContainer />
         </Provider>
     </BrowserRouter>
 , document.getElementById('reactroot'));
