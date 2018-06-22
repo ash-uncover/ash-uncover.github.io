@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import PromiseUtils from 'utils/PromiseUtils'
+
+import Busy from 'components/commons/busy/Busy'
+
 import './_app.scss'
 
 class AppHome extends React.Component {
@@ -20,32 +24,34 @@ class AppHome extends React.Component {
     onImportProject(event) {
         this.props.onLoadModelRequest()
 		event.preventDefault()
-		if (this.fileInput.files.length && this.fileInput.files[0]) {
+		if (this.fileInput.files.length) {
             const file = this.fileInput.files[0]
-            if (file) {
-                var reader = new FileReader();
-                reader.readAsText(file, "UTF-8");
-                reader.onload = e => {
-                    try {
-                        const model = JSON.parse(e.target.result)
-                        console.log(model)
-                        this.props.onLoadModelSuccess(model)
-                        this.props.onNavigate('/settings')
-                    } catch (error) {
-                        this.props.onLoadModelFailure(error)
+            const promise = new Promise((resolve, reject) => {
+                if (file) {
+                    const reader = new FileReader();
+                    reader.readAsText(file, 'UTF-8');
+                    reader.onload = e => {
+                        try {
+                            resolve(JSON.parse(e.target.result))
+                        } catch (error) {
+                            reject(error)
+                        }
                     }
+                    reader.onerror = e => {
+                        reject('Error while loading model from file')
+                    }
+                } else {
+                    rejcet('No file selected')
                 }
-                reader.onerror = e => {
-                    this.props.onLoadModelFailure('Error while loading model from file')
-                }
-            }
-            /*
-			this.setState({ 
-				src: this.createObjectURL(file),
-				error: '' 
-			})
-            this.props.onLoadModel(model)
-            */
+            })
+            PromiseUtils.delayed(promise, 1000).
+            then(result => {
+                this.props.onLoadModelSuccess(result)
+                this.props.onNavigate('/settings')
+            }).
+            catch(error => {
+                this.props.onLoadModelFailure(error)
+            })
 		}
 	}
 
@@ -69,12 +75,15 @@ class AppHome extends React.Component {
                         onChange={this.onImportProject}
 						accept={['*.json']} />
                 </span>
+                { this.props.busy ? <Busy /> : null }
             </div>
         )
     }
 }
 
 AppHome.propTypes = {
+    busy: PropTypes.bool,
+
     onNavigate: PropTypes.func.isRequired,
     
     onLoadModelRequest: PropTypes.func.isRequired,
@@ -83,6 +92,7 @@ AppHome.propTypes = {
 }
 
 AppHome.defaultProps = {
+    busy: false
 }
 
 export default AppHome

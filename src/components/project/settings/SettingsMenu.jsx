@@ -5,8 +5,8 @@ import SettingsMenuItem from './SettingsMenuItem'
 import './_settings.scss'
 
 const ITEMS = [
-    { id: 'settings', name: 'Project settings', src: 'fas fa-cogs' },
-    { id: 'modules', name: 'Project modules', src: 'fas fa-th' }
+    { id: 'settings', name: 'Global settings', src: 'fas fa-cogs' },
+    { id: 'modules', name: 'Modules', src: 'fas fa-th' }
 ]
 
 class SettingsMenu extends React.Component {
@@ -27,7 +27,7 @@ class SettingsMenu extends React.Component {
         return (
             <div className='settings-menu'>
                 <div className='title'>
-                    Project
+                    Settings
                 </div>
                 <div className='items'>
                     {ITEMS.map(this.buildItem)}

@@ -4,7 +4,10 @@ import ActionRegistry from 'core/ActionRegistry'
 import AppHome from 'components/AppHome'
 
 export const mapStateToProps = (state, ownProps) => {
-    return {}
+    const props = {
+        busy: state.model.loading
+    }
+    return props
 }
 
 export const mapDispatchToProps = (dispatch, ownProps) => {

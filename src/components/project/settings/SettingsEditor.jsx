@@ -18,7 +18,7 @@ class SettingsEditor extends React.Component {
         return (
             <div className='settings-editor'>
                 
-                <h2>Project Settings</h2>
+                <h2>Global Settings</h2>
 
                 <h3>General information</h3>
                 <SettingsFormInputContainer 
@@ -36,7 +36,7 @@ class SettingsEditor extends React.Component {
                     name='Repository name' 
                     edit={true} />
                 
-                <h2>Modules Settings</h2>
+                <h2>Modules</h2>
                 
                 <h3>Authentication module</h3>
                 <SettingsFormSwitchContainer 
