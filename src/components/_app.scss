@@ -2,9 +2,6 @@
 
 $toolbar-height: 3rem;
 
-$menu-width: 10rem;
-$menu-item-size: 5rem;
-
 .app {
     height: 100%;
     position: relative;
@@ -37,7 +34,7 @@ $menu-item-size: 5rem;
 
     .app-home {
         position: absolute;
-        top: $toolbar-height;
+        top: 0;
         bottom: 0;
         left: 0;
         right: 0;
@@ -83,58 +80,11 @@ $menu-item-size: 5rem;
         }
     }
 
-    .app-menu {
-        padding-top: 1rem;
-        position: absolute;
-        top: $toolbar-height;
-        bottom: 0;
-        left: 0;
-        width: $menu-width;
-        
-        background: $primary-background;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .app-menu-item {
-            color: $primary-color;
-            
-            margin: 1rem;
-            height: $menu-item-size;
-            width: $menu-item-size;
-            
-            border-radius: 50%;
-            background: $primary-highlight-background;
-            transition: border-radius 0.2s;
-            
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            cursor: pointer;
-
-            .icon {
-                font-size: 2rem;
-            }
-            &.selected,
-            &:hover {
-                border-radius: 0.5rem;
-                background: $primary-select-background;
-            }
-            &.selected {
-                .icon {
-                    color: $primary-select-color;
-                }
-            }
-        }
-    }
-
     .app-content {
         position: absolute;
         top: $toolbar-height;
         bottom: 0;
-        left: $menu-width;
+        left: 0;
         right: 0;
     }
 }

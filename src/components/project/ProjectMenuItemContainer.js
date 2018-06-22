@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import ActionRegistry from 'core/ActionRegistry'
-import AppMenuItem from 'components/AppMenuItem'
+import ProjectMenuItem from './ProjectMenuItem'
 
 export const mapStateToProps = (state, ownProps) => {
     const props = Object.assign({}, ownProps)
@@ -16,9 +16,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const ContainerAppMenuItem = connect(
+const ContainerProjectMenuItem = connect(
     mapStateToProps,
     mapDispatchToProps
-)(AppMenuItem)
+)(ProjectMenuItem)
 
-export default ContainerAppMenuItem
+export default ContainerProjectMenuItem

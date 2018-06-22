@@ -19,7 +19,7 @@ class AppHome extends React.Component {
     /* RENDERING */
 
     onNewProject() {
-        this.props.onNavigate('/settings')
+        this.props.onNavigate('/project/settings')
     }
     onImportProject(event) {
         this.props.onLoadModelRequest()
@@ -47,7 +47,7 @@ class AppHome extends React.Component {
             PromiseUtils.delayed(promise, 1000).
             then(result => {
                 this.props.onLoadModelSuccess(result)
-                this.props.onNavigate('/settings')
+                this.props.onNavigate('/project/settings')
             }).
             catch(error => {
                 this.props.onLoadModelFailure(error)

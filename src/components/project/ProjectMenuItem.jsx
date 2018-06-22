@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './_app.scss'
+import './_project.scss'
 
-class AppMenuItem extends React.Component {
+class ProjectMenuItem extends React.Component {
 
     constructor() {
         super(...arguments)
@@ -12,7 +12,7 @@ class AppMenuItem extends React.Component {
     /* RENDERING */
 
     get className() {
-        let result = 'app-menu-item'
+        let result = 'project-menu-item'
         if (this.props.selected) result += ' selected'
         return result
     }
@@ -25,7 +25,7 @@ class AppMenuItem extends React.Component {
     }
 }
 
-AppMenuItem.propTypes = {
+ProjectMenuItem.propTypes = {
     id: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -33,7 +33,7 @@ AppMenuItem.propTypes = {
     onNavigate: PropTypes.func.isRequired
 }
 
-AppMenuItem.defaultProps = {
+ProjectMenuItem.defaultProps = {
 }
 
-export default AppMenuItem
+export default ProjectMenuItem

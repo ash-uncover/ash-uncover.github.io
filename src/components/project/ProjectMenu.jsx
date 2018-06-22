@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './_app.scss'
-import AppMenuItemContainer from 'components/AppMenuItemContainer';
+import './_project.scss'
+import ProjectMenuItemContainer from './ProjectMenuItemContainer';
 
-class AppMenu extends React.Component {
+class ProjectMenu extends React.Component {
 
     constructor() {
         super(...arguments)
@@ -16,20 +16,20 @@ class AppMenu extends React.Component {
 
     buildItem(item, index) {
         return (
-            <AppMenuItemContainer key={item.id} {...item} />
+            <ProjectMenuItemContainer key={item.id} {...item} />
         )
     }
 
     render() {
         return (
-            <div className='app-menu'>
+            <div className='project-menu'>
                 {this.props.items.map(this.buildItem)}
             </div>
         )
     }
 }
 
-AppMenu.propTypes = {
+ProjectMenu.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         src: PropTypes.string.isRequired,
@@ -38,8 +38,8 @@ AppMenu.propTypes = {
     }))
 }
 
-AppMenu.defaultProps = {
+ProjectMenu.defaultProps = {
     items: []
 }
 
-export default AppMenu
+export default ProjectMenu
