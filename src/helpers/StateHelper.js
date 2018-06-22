@@ -5,7 +5,7 @@ export class StateHelper {
     constructor () {
     }
 
-    getCell(state, x, y) {
+    getModelData(state, path) {
         return state.app.grid.cells[x][y]
     }
 }

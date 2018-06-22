@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './_project.scss'
+import './_settings.scss'
 
-class ProjectMenuItem extends React.Component {
+class SettingsMenuItem extends React.Component {
 
     constructor() {
         super(...arguments)
@@ -13,7 +13,7 @@ class ProjectMenuItem extends React.Component {
 
     render() {
         return (
-            <div className='project-menu-item'>
+            <div className='settings-menu-item'>
                 <i className={`icon ${this.props.src}`} />
                 <span className='text'>{this.props.name}</span>
             </div>
@@ -21,13 +21,13 @@ class ProjectMenuItem extends React.Component {
     }
 }
 
-ProjectMenuItem.propTypes = {
+SettingsMenuItem.propTypes = {
     id: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
 }
 
-ProjectMenuItem.defaultProps = {
+SettingsMenuItem.defaultProps = {
 }
 
-export default ProjectMenuItem
+export default SettingsMenuItem

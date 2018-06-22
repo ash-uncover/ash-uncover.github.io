@@ -12,14 +12,30 @@ class AppHome extends React.Component {
         this.onImportProject = this.onImportProject.bind(this)
     }
 
+    createObjectURL(object) {
+	    return (window.URL) ? window.URL.createObjectURL(object) : window.webkitURL.createObjectURL(object);
+    }
+    
     /* RENDERING */
 
     onNewProject() {
-        this.props.onNavigate('/project')
+        this.props.onNavigate('/settings')
     }
-    onImportProject() {
-        this.props.onNavigate('/project')
-    }
+    onImportProject(event) {
+		event.preventDefault()
+		if (this.fileInput.files.length && this.fileInput.files[0]) {
+            const file = this.fileInput.files[0]
+            console.log(file)
+            console.log(file.toString())
+            /*
+			this.setState({ 
+				src: this.createObjectURL(file),
+				error: '' 
+			})
+            this.props.onLoadModel(model)
+            */
+		}
+	}
 
     render() {
         return (
@@ -28,17 +44,27 @@ class AppHome extends React.Component {
                     <i className='icon fas fa-plus-square'></i>
                     <span className='text'>New Project</span>
                 </button>
-                <button className='app-home-item' onClick={this.onImportProject}>
-                    <i className='icon fas fa-download'></i>
-                    <span className='text'>Import Project</span>
-                </button>
+                <span>
+                    <label className='app-home-item' htmlFor='import-project'>
+                        <i className='icon fas fa-download'></i>
+                        <span className='text'>Import Project</span>
+                    </label>
+                    <input 
+                        className='hidden' 
+                        id='import-project' 
+                        ref={(c) => this.fileInput = c} 
+                        type='file'
+                        onChange={this.onImportProject}
+						accept={['*.json']} />
+                </span>
             </div>
         )
     }
 }
 
 AppHome.propTypes = {
-    onNavigate: PropTypes.func.isRequired
+    onNavigate: PropTypes.func.isRequired,
+    onLoadModel: PropTypes.func.isRequired
 }
 
 AppHome.defaultProps = {

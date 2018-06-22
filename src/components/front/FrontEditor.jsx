@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import FrontMenu from 'components/front/FrontMenu'
+
 import './_front.scss'
 
 class FrontEditor extends React.Component {
@@ -14,7 +16,7 @@ class FrontEditor extends React.Component {
     render() {
         return (
             <div className='front-editor'>
-                front
+                <FrontMenu />
             </div>
         )
     }

@@ -10,9 +10,9 @@ import AppContent from 'components/AppContent'
 import './_app.scss'
 
 const MENU_ITEMS = {
-    PROJECT: { id:'PROJECT', src:'fas fa-project-diagram', name: 'Project', link: '/project' },
+    PROJECT: { id:'SETTINGS', src:'fas fa-project-diagram', name: 'Settings', link: '/settings' },
     DATABASE: { id:'DATABASE', src:'fas fa-database', name: 'Database', link: '/database' },
-    SERVER: { id:'Server', src:'fas fa-upload', name: 'Server', link: '/server' },
+    SERVER: { id:'SERVER', src:'fas fa-upload', name: 'Server', link: '/server' },
     FRONT: { id:'FRONT', src:'fab fa-trello', name: 'Front', link: '/front' }
 }
 

@@ -2,30 +2,45 @@ import ActionRegistry from 'core/ActionRegistry'
 
 export const getDefaultState = () => ({
     project:{
-        name: 'New Project'
-    },
-    modules: {
-        mail: {
-            use: false,
-            config: {
-                smtpHost: '',
-                smtpPort: 0,
-                smtpUser: '',
-                smtpPass: '',
-                username: ''
+        name: 'New Project',
+        github: {
+            workspace: '',
+            repository: ''
+        },
+        modules: {
+            mail: {
+                use: false,
+                config: {
+                    smtpHost: '',
+                    smtpPort: 0,
+                    smtpUser: '',
+                    smtpPass: '',
+                    username: ''
+                }
+            },
+            auth: {
+                use: false,
+                config: {
+                    enforcemail: false
+                }
+            },
+            googlemap: {
+                use: false,
+                config: {
+                    apiKey: ''
+                }
             }
         },
-        auth: {
-            use: false,
-            config: {
-                enforcemail: false
-            }
+        database: {
+            collections: []
         },
-        googlemap: {
-            use: false,
-            config: {
-                apiKey: ''
-            }
+        server: {
+            baseUrl: '',
+            entities: [],
+            endpoints: []
+        },
+        front: {
+            components: []
         }
     }
 })

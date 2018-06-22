@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ProjectMenuItem from 'components/project/ProjectMenuItem'
-import './_project.scss'
+import SettingsMenuItem from 'components/settings/SettingsMenuItem'
+import './_settings.scss'
 
 const ITEMS = [
     { id: 'settings', name: 'Project settings', src: 'fas fa-cogs' },
     { id: 'modules', name: 'Project modules', src: 'fas fa-th' }
 ]
 
-class ProjectMenu extends React.Component {
+class SettingsMenu extends React.Component {
 
     constructor() {
         super(...arguments)
@@ -19,13 +19,13 @@ class ProjectMenu extends React.Component {
 
     buildItem(item, index) {
         return (
-            <ProjectMenuItem key={item.id} {...item} />
+            <SettingsMenuItem key={item.id} {...item} />
         )
     }
 
     render() {
         return (
-            <div className='project-menu'>
+            <div className='settings-menu'>
                 <div className='title'>
                     Project
                 </div>
@@ -37,10 +37,10 @@ class ProjectMenu extends React.Component {
     }
 }
 
-ProjectMenu.propTypes = {
+SettingsMenu.propTypes = {
 }
 
-ProjectMenu.defaultProps = {
+SettingsMenu.defaultProps = {
 }
 
-export default ProjectMenu
+export default SettingsMenu

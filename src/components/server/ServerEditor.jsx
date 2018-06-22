@@ -14,7 +14,8 @@ class ServerEditor extends React.Component {
     render() {
         return (
             <div className='server-editor'>
-                server
+                <h2>Server settings</h2>
+                <h2>Server endpoints</h2>
             </div>
         )
     }

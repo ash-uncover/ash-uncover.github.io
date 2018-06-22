@@ -12,6 +12,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
         onNavigate: (link) => {
             dispatch(ActionRegistry.appNavigate(link))
         },
+        onLoadModel: (model) => {
+            dispatch(ActionRegistry.loadModel(model))
+        }
     }
 }
 

@@ -17,10 +17,11 @@ class AppToolbar extends React.Component {
 
     onExportProject() {
         const model = store.getState().model
+        const name = model.project.name.toLowerCase().split(' ').filter(e => !!e).join('-')
         const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(model))
         const downloadAnchorNode = document.createElement('a');
         downloadAnchorNode.setAttribute('href', dataStr);
-        downloadAnchorNode.setAttribute('download', 'model.json');
+        downloadAnchorNode.setAttribute('download', `${name}.json`);
         document.body.appendChild(downloadAnchorNode);
         downloadAnchorNode.click();
         downloadAnchorNode.remove();
