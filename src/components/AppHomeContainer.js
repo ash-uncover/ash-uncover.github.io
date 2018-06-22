@@ -12,8 +12,15 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
         onNavigate: (link) => {
             dispatch(ActionRegistry.appNavigate(link))
         },
-        onLoadModel: (model) => {
-            dispatch(ActionRegistry.loadModel(model))
+        onLoadModelRequest: () => {
+            dispatch(ActionRegistry.loadModelRequest())
+        },
+        onLoadModelSuccess: (model) => {
+            dispatch(ActionRegistry.loadModelSuccess(model))
+        },
+        onLoadModelFailure: (error) => {
+            console.log(error)
+            dispatch(ActionRegistry.loadModelFailure(error))
         }
     }
 }

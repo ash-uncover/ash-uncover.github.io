@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import FrontMenu from 'components/front/FrontMenu'
+import FrontMenu from './FrontMenu'
 
 import './_front.scss'
 
-class FrontEditor extends React.Component {
+class Front extends React.Component {
 
     constructor() {
         super(...arguments)
@@ -22,10 +22,10 @@ class FrontEditor extends React.Component {
     }
 }
 
-FrontEditor.propTypes = {
+Front.propTypes = {
 }
 
-FrontEditor.defaultProps = {
+Front.defaultProps = {
 }
 
-export default FrontEditor
+export default Front

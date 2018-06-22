@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import SettingsMenuItem from 'components/settings/SettingsMenuItem'
+import SettingsMenuItem from './SettingsMenuItem'
 import './_settings.scss'
 
 const ITEMS = [

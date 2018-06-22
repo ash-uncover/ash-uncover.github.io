@@ -10,8 +10,6 @@ export const mapStateToProps = (state, ownProps) => {
     const value = elements.reduce((result, e) => {
         return result[e]
     }, state.model)
-    console.log(ownProps)
-    console.log(value)
     const props = {
         id: ownProps.id,
         label: ownProps.name,

@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Switch, Route } from 'react-router-dom'
 
-import Settings from 'components/settings/Settings'
-import DatabaseEditor from 'components/database/DatabaseEditor'
-import Server from 'components/server/Server'
-import FrontEditor from 'components/front/FrontEditor'
+import Settings from 'components/project/settings/Settings'
+import Database from 'components/project/database/Database'
+import Server from 'components/project/server/Server'
+import Front from 'components/project/front/Front'
 
 import './_app.scss'
 
@@ -28,7 +28,7 @@ class AppContent extends React.Component {
                     <Route
                         exact
                         path='/database'
-                        component={DatabaseEditor} />
+                        component={Database} />
                     <Route
                         exact
                         path='/server'
@@ -36,7 +36,7 @@ class AppContent extends React.Component {
                     <Route
                         exact
                         path='/front'
-                        component={FrontEditor} />
+                        component={Front} />
                 </Switch>
             </div>
         )

@@ -1,6 +1,8 @@
 import ActionRegistry from 'core/ActionRegistry'
 
 export const getDefaultState = () => ({
+    loading: false,
+    loadingError: null,
     project:{
         name: 'New Project',
         github: {
@@ -49,9 +51,23 @@ const reducer = (state = getDefaultState(), action) => {
     const newState = JSON.parse(JSON.stringify(state))
 
     switch (action.type) {
+    
+    case ActionRegistry.LOAD_MODEL_REQUEST:
+        newState.loading = true
+        newState.loadingError = null
+        return newState
+
+    case ActionRegistry.LOAD_MODEL_SUCCESS:
+        newState.loading = false
+        newState.project = action.args.model
+        return newState
+
+    case ActionRegistry.LOAD_MODEL_FAILURE:
+        newState.loading = false
+        newState.loadingError = action.args.error
+        return newState
 
     case ActionRegistry.UPDATE_MODEL:
-        console.log(action)
         const elements = action.args.path.split('.')
         let element
         elements.reduce((result, e) => {
@@ -59,9 +75,7 @@ const reducer = (state = getDefaultState(), action) => {
             return result[e]
         }, newState)
         element[elements[elements.length - 1]] = action.args.value
-        console.log(newState)
         return newState
-
 
     default:
         return state

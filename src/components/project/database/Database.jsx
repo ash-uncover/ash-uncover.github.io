@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import DatabaseMenu from 'components/database/DatabaseMenu'
+import DatabaseMenu from './DatabaseMenu'
 
 import './_database.scss'
 
-class DatabaseEditor extends React.Component {
+class Database extends React.Component {
 
     constructor() {
         super(...arguments)
@@ -15,17 +15,17 @@ class DatabaseEditor extends React.Component {
 
     render() {
         return (
-            <div className='database-editor'>
+            <div className='database'>
                 <DatabaseMenu />
             </div>
         )
     }
 }
 
-DatabaseEditor.propTypes = {
+Database.propTypes = {
 }
 
-DatabaseEditor.defaultProps = {
+Database.defaultProps = {
 }
 
-export default DatabaseEditor
+export default Database

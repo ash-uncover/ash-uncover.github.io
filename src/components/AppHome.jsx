@@ -11,10 +11,6 @@ class AppHome extends React.Component {
         this.onNewProject = this.onNewProject.bind(this)
         this.onImportProject = this.onImportProject.bind(this)
     }
-
-    createObjectURL(object) {
-	    return (window.URL) ? window.URL.createObjectURL(object) : window.webkitURL.createObjectURL(object);
-    }
     
     /* RENDERING */
 
@@ -22,11 +18,27 @@ class AppHome extends React.Component {
         this.props.onNavigate('/settings')
     }
     onImportProject(event) {
+        this.props.onLoadModelRequest()
 		event.preventDefault()
 		if (this.fileInput.files.length && this.fileInput.files[0]) {
             const file = this.fileInput.files[0]
-            console.log(file)
-            console.log(file.toString())
+            if (file) {
+                var reader = new FileReader();
+                reader.readAsText(file, "UTF-8");
+                reader.onload = e => {
+                    try {
+                        const model = JSON.parse(e.target.result)
+                        console.log(model)
+                        this.props.onLoadModelSuccess(model)
+                        this.props.onNavigate('/settings')
+                    } catch (error) {
+                        this.props.onLoadModelFailure(error)
+                    }
+                }
+                reader.onerror = e => {
+                    this.props.onLoadModelFailure('Error while loading model from file')
+                }
+            }
             /*
 			this.setState({ 
 				src: this.createObjectURL(file),
@@ -64,7 +76,10 @@ class AppHome extends React.Component {
 
 AppHome.propTypes = {
     onNavigate: PropTypes.func.isRequired,
-    onLoadModel: PropTypes.func.isRequired
+    
+    onLoadModelRequest: PropTypes.func.isRequired,
+    onLoadModelSuccess: PropTypes.func.isRequired,
+    onLoadModelFailure: PropTypes.func.isRequired
 }
 
 AppHome.defaultProps = {

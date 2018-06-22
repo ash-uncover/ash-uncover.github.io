@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import SettingsMenu from 'components/settings/SettingsMenu';
-import SettingsEditor from 'components/settings/SettingsEditor';
+import SettingsMenu from './SettingsMenu';
+import SettingsEditor from './SettingsEditor';
 
 import './_settings.scss'
 

@@ -16,8 +16,8 @@ class AppToolbar extends React.Component {
     /* RENDERING */
 
     onExportProject() {
-        const model = store.getState().model
-        const name = model.project.name.toLowerCase().split(' ').filter(e => !!e).join('-')
+        const model = store.getState().model.project
+        const name = model.name.toLowerCase().split(' ').filter(e => !!e).join('-')
         const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(model))
         const downloadAnchorNode = document.createElement('a');
         downloadAnchorNode.setAttribute('href', dataStr);

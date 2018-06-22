@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ServerMenu from 'components/server/ServerMenu'
-import ServerEditor from 'components/server/ServerEditor'
+import ServerMenu from './ServerMenu'
+import ServerEditor from './ServerEditor'
 
 import './_server.scss'
 
