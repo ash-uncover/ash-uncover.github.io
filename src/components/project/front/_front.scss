@@ -23,4 +23,12 @@ $menu-width: 20rem;
             text-transform: uppercase;
         }
     }
+
+    .front-editor {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: $menu-width;
+        right: 0;
+    }
 }

@@ -12,15 +12,15 @@ class ProjectMenuItem extends React.Component {
     /* RENDERING */
 
     get className() {
-        let result = 'project-menu-item'
+        let result = `project-menu-item`
         if (this.props.selected) result += ' selected'
         return result
     }
     render() {
         return (
-            <div className={this.className} onClick={this.props.onNavigate}>
+            <button className={`btn btn-dark ${this.className}`} onClick={this.props.onNavigate}>
                 <i className={`icon ${this.props.src}`} alt={this.props.name} />
-            </div>
+            </button>
         )
     }
 }
@@ -29,7 +29,7 @@ ProjectMenuItem.propTypes = {
     id: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    
+
     onNavigate: PropTypes.func.isRequired
 }
 

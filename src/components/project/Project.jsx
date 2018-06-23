@@ -14,7 +14,7 @@ import './_project.scss'
 const MENU_ITEMS = {
     PROJECT: { id:'SETTINGS', src:'fas fa-project-diagram', name: 'Settings', link: '/project/settings' },
     DATABASE: { id:'DATABASE', src:'fas fa-database', name: 'Database', link: '/project/database' },
-    SERVER: { id:'SERVER', src:'fas fa-upload', name: 'Server', link: '/project/server' },
+    SERVER: { id:'SERVER', src:'fas fa-hdd', name: 'Server', link: '/project/server' },
     FRONT: { id:'FRONT', src:'fab fa-trello', name: 'Front', link: '/project/front' }
 }
 

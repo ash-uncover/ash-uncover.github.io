@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import DatabaseEditor from './DatabaseEditor'
 import DatabaseMenu from './DatabaseMenu'
 
 import './_database.scss'
@@ -17,6 +18,7 @@ class Database extends React.Component {
         return (
             <div className='database'>
                 <DatabaseMenu />
+                <DatabaseEditor />
             </div>
         )
     }

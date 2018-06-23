@@ -1,15 +1,36 @@
 @import "~bootstrap/scss/bootstrap";
 
-$primary-color: white;
+$main-color: #EEE;
+$main-background: #222;
+$main-highlight-color: #DDD;
+$main-highlight-background: #333;
+$main-select-color: #CCC;
+$main-select-background: #444;
+
+$primary-color: #DDD;
 $primary-background: #112;
 $primary-highlight-color: #DDC;
 $primary-highlight-background: #224;
-$primary-select-color: #FDA;
+$primary-select-color: #BBA;
 $primary-select-background: #446;
 
 $secondary-color: white;
-$secondary-background: #112;
-$secondary-highlight-color: #DDC;
-$secondary-highlight-background: #224;
-$secondary-select-color: #FDA;
-$secondary-select-background: #446;
+$secondary-background: #212;
+$secondary-highlight-color: #DCD;
+$secondary-highlight-background: #424;
+$secondary-select-color: #BAB;
+$secondary-select-background: #646;
+
+$third-color: white;
+$third-background: #221;
+$third-highlight-color: #CCD;
+$third-highlight-background: #442;
+$third-select-color: #BBAB;
+$third-select-background: #664;
+
+$secondary-color: white;
+$secondary-background: #212;
+$secondary-highlight-color: #DCD;
+$secondary-highlight-background: #424;
+$secondary-select-color: #BAB;
+$secondary-select-background: #646;

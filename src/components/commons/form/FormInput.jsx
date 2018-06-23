@@ -42,6 +42,12 @@ class FormInput extends React.Component {
 
     /* RENDERING */
 
+    get className() {
+        let result = 'form form-input'
+        if (this.props.className) result += ` ${this.props.className}`
+        return result
+    }
+
     buildLabel() {
         if (this.props.label) {
             return (
@@ -54,7 +60,7 @@ class FormInput extends React.Component {
 
     render() {
         return (
-            <div className='form form-input'>
+            <div className={this.className}>
                 {this.buildLabel()}
                 <input
                     id={this.props.id}
@@ -85,6 +91,8 @@ FormInput.propTypes = {
     min: PropTypes.number,
     max: PropTypes.number,
 
+    className: PropTypes.string,
+
     onBlur: PropTypes.func,
     onChange: PropTypes.func
 }
@@ -96,6 +104,7 @@ FormInput.defaultProps = {
     type: 'text',
     min: undefined,
     max: undefined,
+    className: '',
 
     onBlur: null,
     onChange: null

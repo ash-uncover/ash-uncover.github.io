@@ -34,21 +34,40 @@ export const getDefaultState = () => ({
             }
         },
         database: {
-            collections: []
+            config: {
+                host: '127.0.0.1',
+                port: 4242,
+                name: ''
+            },
+            collections: {},
+            types: [
+                { id: 'type1', values: [ 'value1', 'value2' ] }
+            ]
         },
         server: {
-            baseUrl: '',
-            entities: [],
-            endpoints: []
+            config: {
+                protocol: 'http',
+                host: '127.0.0.1',
+                port: '8090',
+                baseUrl: '/api/v1'
+            },
+            entities: {},
+            endpoints: {}
         },
         front: {
-            components: []
+            config: {
+                protocol: 'http',
+                host: '127.0.0.1',
+                port: '8080'
+            },
+            components: {}
         }
     }
 })
 
 const reducer = (state = getDefaultState(), action) => {
     const newState = JSON.parse(JSON.stringify(state))
+    let type, index
 
     switch (action.type) {
     
@@ -75,6 +94,48 @@ const reducer = (state = getDefaultState(), action) => {
             return result[e]
         }, newState)
         element[elements[elements.length - 1]] = action.args.value
+        return newState
+
+    case ActionRegistry.CREATE_DATABASE_TYPE:
+        newState.project.database.types.push({
+            id: action.args.id,
+            values: []
+        })
+        return newState
+
+    case ActionRegistry.UPDATE_DATABASE_TYPE:
+        type = newState.project.database.types.find(type => {
+            return type.id === action.args.id
+        }) 
+        type.id = action.args.newId
+        return newState
+    
+    case ActionRegistry.DELETE_DATABASE_TYPE:
+        index = newState.project.database.types.findIndex(type => {
+            return type.id === action.args.id
+        }) 
+        newState.project.database.types.splice(index, 1)
+        return newState
+
+    case ActionRegistry.CREATE_DATABASE_TYPE_VALUE:
+        type = newState.project.database.types.find(type => {
+            return type.id === action.args.id
+        }) 
+        type.values.push(action.args.value)
+        return newState
+
+    case ActionRegistry.UPDATE_DATABASE_TYPE_VALUE:
+        type = newState.project.database.types.find(type => {
+            return type.id === action.args.id
+        }) 
+        type.values[action.args.index] = action.args.value
+        return newState
+    
+    case ActionRegistry.DELETE_DATABASE_TYPE_VALUE:
+        type = newState.project.database.types.find(type => {
+            return type.id === action.args.id
+        }) 
+        type.values.splice(type.values.indexOf(action.args.value), 1)
         return newState
 
     default:
