@@ -5,7 +5,8 @@ import AppHome from 'components/AppHome'
 
 export const mapStateToProps = (state, ownProps) => {
     const props = {
-        busy: state.model.loading
+        busy: state.model.loading,
+        sample: state.data.sample
     }
     return props
 }
@@ -22,8 +23,10 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(ActionRegistry.loadModelSuccess(model))
         },
         onLoadModelFailure: (error) => {
-            console.log(error)
             dispatch(ActionRegistry.loadModelFailure(error))
+        },
+        onUseSample: (sample) => {
+            dispatch(ActionRegistry.useSample(sample))
         }
     }
 }

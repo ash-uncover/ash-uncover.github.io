@@ -1,4 +1,5 @@
 import ActionRegistry from 'core/ActionRegistry'
+import HelperRegistry from 'core/HelperRegistry'
 
 export const getDefaultState = () => ({
     loading: false,
@@ -23,7 +24,7 @@ export const getDefaultState = () => ({
             auth: {
                 use: false,
                 config: {
-                    enforcemail: false
+                    enforceMail: false
                 }
             },
             googlemap: {
@@ -37,12 +38,10 @@ export const getDefaultState = () => ({
             config: {
                 host: '127.0.0.1',
                 port: 4242,
-                name: ''
+                name: 'db'
             },
-            collections: {},
-            types: [
-                { id: 'type1', values: [ 'value1', 'value2' ] }
-            ]
+            collections: [],
+            types: []
         },
         server: {
             config: {
@@ -67,10 +66,16 @@ export const getDefaultState = () => ({
 
 const reducer = (state = getDefaultState(), action) => {
     const newState = JSON.parse(JSON.stringify(state))
-    let type, index
+    let types, type, collections, collection, fields, field, index
 
     switch (action.type) {
     
+    /* MODEL */
+
+    case ActionRegistry.USE_SAMPLE:
+        newState.project = action.args.project
+        return newState
+
     case ActionRegistry.LOAD_MODEL_REQUEST:
         newState.loading = true
         newState.loadingError = null
@@ -96,6 +101,8 @@ const reducer = (state = getDefaultState(), action) => {
         element[elements[elements.length - 1]] = action.args.value
         return newState
 
+    /* TYPES */
+
     case ActionRegistry.CREATE_DATABASE_TYPE:
         newState.project.database.types.push({
             id: action.args.id,
@@ -117,6 +124,8 @@ const reducer = (state = getDefaultState(), action) => {
         newState.project.database.types.splice(index, 1)
         return newState
 
+    /* TYPE VALUES */
+
     case ActionRegistry.CREATE_DATABASE_TYPE_VALUE:
         type = newState.project.database.types.find(type => {
             return type.id === action.args.id
@@ -136,6 +145,59 @@ const reducer = (state = getDefaultState(), action) => {
             return type.id === action.args.id
         }) 
         type.values.splice(type.values.indexOf(action.args.value), 1)
+        return newState
+
+    /* COLLECTIONS */
+
+    case ActionRegistry.CREATE_DATABASE_COLLECTION:
+        newState.project.database.collections.push({
+            id: action.args.collectionId,
+            fields: []
+        })
+        return newState
+
+    case ActionRegistry.UPDATE_DATABASE_COLLECTION:
+        collection = newState.project.database.collections.find(collection => {
+            return collection.id === action.args.collectionId
+        }) 
+        Object.assign(collection, action.args.collection)
+        return newState
+    
+    case ActionRegistry.DELETE_DATABASE_COLLECTION:
+        index = newState.project.database.collections.findIndex(collection => {
+            return collection.id === action.args.collectionId
+        }) 
+        newState.project.database.collections.splice(index, 1)
+        return newState
+
+    /* COLLECTION FIELDS */
+
+    case ActionRegistry.CREATE_DATABASE_COLLECTION_FIELD:
+        collection = HelperRegistry.State.getCollection({ model : newState }, action.args.collectionId)
+        collection.fields.push({ 
+            id: action.args.fieldId,
+            type: 'string',
+            isArray: false
+        })
+        return newState
+
+    case ActionRegistry.UPDATE_DATABASE_COLLECTION_FIELD:
+        field = HelperRegistry.State.getCollectionField(
+            { model : newState }, 
+            action.args.collectionId, 
+            action.args.fieldId
+        )
+        Object.assign(field, action.args.field)
+        return newState
+    
+    case ActionRegistry.DELETE_DATABASE_COLLECTION_FIELD:
+        fields = HelperRegistry.State.getCollectionFields({ model : newState }, action.args.collectionId)
+        index = HelperRegistry.State.getCollectionFieldIndex(
+            { model : newState }, 
+            action.args.collectionId, 
+            action.args.fieldId
+        )
+        fields.splice(index, 1)
         return newState
 
     default:

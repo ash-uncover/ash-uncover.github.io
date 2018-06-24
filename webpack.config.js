@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 
 const paths = {
@@ -14,6 +15,13 @@ module.exports = {
         path: paths.DIST,
         filename: 'bundle.js'
     },
+
+    plugins: [
+        new webpack.ProvidePlugin({
+           jQuery: 'jquery',
+           $: 'jquery'
+       })
+   ],
 
     node: {
         console: true,

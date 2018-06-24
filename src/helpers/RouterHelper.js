@@ -1,4 +1,4 @@
-import HelperRegistry from 'registries/HelperRegistry'
+import HelperRegistry from 'core/HelperRegistry'
 
 export class RouterHelper {
 

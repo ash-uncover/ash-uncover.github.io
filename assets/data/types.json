@@ -1,0 +1,11 @@
+[
+    { "id": "string", "java": "String", "javascript": "string" },
+    { "id": "boolean", "java": "Boolean", "javascript": "boolean" },
+    
+    { "id": "integer", "java": "Integer", "javascript": "number" },
+    { "id": "double", "java": "Double", "javascript": "number" },
+    { "id": "long", "java": "Long", "javascript": "number" },
+
+    { "id": "date", "java": "Date", "javascript": "Date" },
+    { "id": "localdate", "java": "LocalDate", "javascript": "Date" }
+]

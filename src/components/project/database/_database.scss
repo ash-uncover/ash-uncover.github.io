@@ -32,34 +32,5 @@ $menu-width: 20rem;
         right: 0;
         padding: 1rem;
         overflow: auto;
-
-        .database-editor-types {
-
-            .database-editor-type {
-                border: 1px solid lightgrey;
-                padding: 1rem;
-                border-radius: 0.5rem;
-                margin-bottom: 1rem;
-                
-                .type-value {
-                    .input-group-append {
-                        width: 2.5rem;
-                        .btn {
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-
-            .section-add-type {
-                display: flex;
-                align-items: center;
-                .form {
-                    flex-grow: 1;
-                    margin-right: 1rem;
-                }
-            }
-        } 
-
     }
 }

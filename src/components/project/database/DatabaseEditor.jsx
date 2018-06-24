@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ModelFormInputContainer from '../ModelFormInputContainer'
-import ModelFormSwitchContainer from '../ModelFormSwitchContainer'
 
-import DatabaseEditorTypesContainer from './DatabaseEditorTypesContainer';
+import DatabaseEditorTypesContainer from './types/DatabaseEditorTypesContainer'
+import DatabaseEditorCollectionsContainer from './collections/DatabaseEditorCollectionsContainer'
 
 import './_database.scss'
 
@@ -37,6 +37,7 @@ class DatabaseEditor extends React.Component {
                 <DatabaseEditorTypesContainer />
 
                 <h2>Database collections</h2>
+                <DatabaseEditorCollectionsContainer />
             </div>
         )
     }

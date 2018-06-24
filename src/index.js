@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
 import 'actions'
+import './helpers/**/*'
 import store from 'store'
 
 import AppRootContainer from 'components/AppRootContainer'

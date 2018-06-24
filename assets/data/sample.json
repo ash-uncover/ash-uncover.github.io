@@ -1,0 +1,89 @@
+{
+  "name": "Sample Project",
+  "github": {
+    "workspace": "ash-uncover",
+    "repository": "ash-uncover.github.io"
+  },
+  "modules": {
+    "mail": {
+      "use": false,
+      "config": {
+        "smtpHost": "",
+        "smtpPort": "",
+        "smtpUser": "",
+        "smtpPass": "",
+        "username": ""
+      }
+    },
+    "auth": {
+      "use": true,
+      "config": {
+        "enforceMail": false
+      }
+    },
+    "googlemap": {
+      "use": true,
+      "config": {
+        "apiKey": "api://6154987-qsc8974dsf974-s9"
+      }
+    }
+  },
+  "database": {
+    "config": {
+      "host": "freemongod.org",
+      "port": 1337,
+      "name": "db-ash-github"
+    },
+    "collections": [
+      {
+        "id": "projects",
+        "fields": [
+          {
+            "id": "name",
+            "type": "string",
+            "isArray": false
+          },
+          {
+            "id": "properties",
+            "type": "boolean",
+            "isArray": true
+          }
+        ]
+      }
+    ],
+    "types": [
+      {
+        "id": "user-type",
+        "values": [
+          "admin",
+          "member"
+        ]
+      },
+      {
+        "id": "project-privacy",
+        "values": [
+          "public",
+          "private"
+        ]
+      }
+    ]
+  },
+  "server": {
+    "config": {
+      "protocol": "https",
+      "host": "ash-uncover.github.io",
+      "port": "8090",
+      "baseUrl": "/api/v1"
+    },
+    "entities": {},
+    "endpoints": {}
+  },
+  "front": {
+    "config": {
+      "protocol": "https",
+      "host": "ash-uncover.github.io",
+      "port": "8080"
+    },
+    "components": {}
+  }
+}

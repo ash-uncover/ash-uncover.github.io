@@ -14,6 +14,7 @@ class AppHome extends React.Component {
 
         this.onNewProject = this.onNewProject.bind(this)
         this.onImportProject = this.onImportProject.bind(this)
+        this.onLoadSample = this.onLoadSample.bind(this)
     }
     
     /* RENDERING */
@@ -41,7 +42,7 @@ class AppHome extends React.Component {
                         reject('Error while loading model from file')
                     }
                 } else {
-                    rejcet('No file selected')
+                    reject('No file selected')
                 }
             })
             PromiseUtils.delayed(promise, 1000).
@@ -53,9 +54,14 @@ class AppHome extends React.Component {
                 this.props.onLoadModelFailure(error)
             })
 		}
-	}
+    }
+    onLoadSample() {
+        this.props.onUseSample(this.props.sample)
+        this.props.onNavigate('/project/settings')
+    }
 
     render() {
+        console.log(this.props)
         return (
             <div className='app-home'>
                 <button className='app-home-item' onClick={this.onNewProject}>
@@ -75,6 +81,10 @@ class AppHome extends React.Component {
                         onChange={this.onImportProject}
 						accept={['*.json']} />
                 </span>
+                <button className='app-home-item' onClick={this.onLoadSample}>
+                    <i className='icon fas fa-file-upload'></i>
+                    <span className='text'>Load Sample</span>
+                </button>
                 { this.props.busy ? <Busy /> : null }
             </div>
         )

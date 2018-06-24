@@ -1,10 +1,12 @@
 import { combineReducers, createStore } from 'redux'
 
 import app from 'store/ReducerApp'
+import data from 'store/ReducerData'
 import model from 'store/ReducerModel'
 
 export const reducer = combineReducers({
     app,
+    data,
     model
 })
 

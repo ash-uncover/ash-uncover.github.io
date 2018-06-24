@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import FormInput from '../../commons/form/FormInput'
-
-import './_database.scss'
+import './_database-types.scss'
 
 class DatabaseEditorType extends React.Component {
 
