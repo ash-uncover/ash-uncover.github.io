@@ -5,6 +5,24 @@ export class StateHelper {
     constructor () {
     }
 
+    /* DATA TYPES */
+
+    getDataTypes(state) {
+        return state.data.types
+    }
+    getDataTypeIds(state) {
+        return this.getDataTypes(state).map(t => t.id)
+    }
+
+    /* TYPES */
+
+    getTypes(state) {
+        return state.model.project.database.types
+    }
+    getTypeIds(state) {
+        return this.getTypes(state).map(t => t.id)
+    }
+
     /* COLLECTIONS */
 
     getCollections(state) {

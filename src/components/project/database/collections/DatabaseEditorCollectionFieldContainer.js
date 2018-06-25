@@ -14,7 +14,7 @@ export const mapStateToProps = (state, ownProps) => {
         fieldType: field.type,
         fieldIsArray: field.isArray,
 
-        fieldTypes: [],
+        fieldTypes: [].concat(HelperRegistry.State.getDataTypeIds(state)).concat(HelperRegistry.State.getTypeIds(state)),
         
         fields: HelperRegistry.State.getCollectionFieldIds(state, ownProps.collectionId)
     }

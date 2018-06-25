@@ -84,10 +84,14 @@ class DatabaseEditorCollectionField extends React.Component {
 
     /* RENDERING */
 
+    buildFieldTitle() {
+        return `Field - ${this.props.fieldId}: ${this.props.fieldType}${this.props.fieldIsArray ? '[]' : ''}`
+    }
+
     render() {
         return (
             <div className='database-editor-collection-field'>
-                <h6>{`Field - ${this.props.fieldId}`}</h6>
+                <h6>{this.buildFieldTitle()}</h6>
                 <div className='form-group row'>
                     <label htmlFor='form-field-name' className='col-2 col-form-label'>
                         {'Name'}
@@ -121,9 +125,7 @@ class DatabaseEditorCollectionField extends React.Component {
                             id='form-field-type' 
                             value={this.state.fieldType}
                             onChange={this.onChangeFieldType}>
-                            <option>string</option>
-                            <option>boolean</option>
-                            <option>number</option>
+                            { this.props.fieldTypes.map(type => <option key={type}>{type}</option>)}
                         </select>
                     </div>
                 </div>

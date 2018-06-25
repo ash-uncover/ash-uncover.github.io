@@ -61,7 +61,6 @@ class AppHome extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className='app-home'>
                 <button className='app-home-item' onClick={this.onNewProject}>
