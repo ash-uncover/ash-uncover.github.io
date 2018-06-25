@@ -25,7 +25,7 @@ class DatabaseEditorTypes extends React.Component {
     onNewTypeChange(event) {
         this.setState({ 
             newType: event.target.value,
-            newTypeValid: this.props.types.indexOf(event.target.value) === -1
+            newTypeValid: this.props.allTypes.indexOf(event.target.value) === -1
         })
     }
 
@@ -74,13 +74,15 @@ class DatabaseEditorTypes extends React.Component {
 
 DatabaseEditorTypes.propTypes = {
     types: PropTypes.arrayOf(PropTypes.string),
+    allTypes: PropTypes.arrayOf(PropTypes.string),
 
     onAddType: PropTypes.func.isRequired,
     onDeleteType: PropTypes.func.isRequired
 }
 
 DatabaseEditorTypes.defaultProps = {
-    types: []
+    types: [],
+    allTypes: []
 }
 
 export default DatabaseEditorTypes

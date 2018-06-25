@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
 
 import ActionRegistry from 'core/ActionRegistry'
+import HelperRegistry from 'core/HelperRegistry'
 
 import DatabaseEditorCollections from './DatabaseEditorCollections'
 
 export const mapStateToProps = (state, ownProps) => {
     const props = {
-        collections: state.model.project.database.collections.map(collection => collection.id)
+        collections: HelperRegistry.State.getCollectionIds(state)
     }
     return props
 }

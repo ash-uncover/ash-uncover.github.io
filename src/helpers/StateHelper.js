@@ -22,6 +22,18 @@ export class StateHelper {
     getTypeIds(state) {
         return this.getTypes(state).map(t => t.id)
     }
+    getType(state, typeId) {
+        return state.model.project.database.types.find(t => t.id === typeId)
+    }
+    getTypeIndex(state, typeId) {
+        return state.model.project.database.types.findIndex(t => t.id === typeId)
+    }
+
+    /* TYPE VALUES */
+
+    getTypeValues(state, typeId) {
+        return this.getType(state, typeId).values
+    }
 
     /* COLLECTIONS */
 

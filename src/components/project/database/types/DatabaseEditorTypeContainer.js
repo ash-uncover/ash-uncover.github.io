@@ -8,8 +8,8 @@ import DatabaseEditorType from './DatabaseEditorType'
 export const mapStateToProps = (state, ownProps) => {
     const props = {
         id: ownProps.id,
-        types: state.model.project.database.types.map(type => type.id),
-        values: state.model.project.database.types.find(type => type.id === ownProps.id).values
+        types: [].concat(HelperRegistry.State.getDataTypeIds(state)).concat(HelperRegistry.State.getTypeIds(state)),
+        values: HelperRegistry.State.getTypeValues(state, ownProps.id)
     }
     return props
 }
