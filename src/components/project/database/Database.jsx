@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import DatabaseEditor from './DatabaseEditor'
-import DatabaseMenu from './DatabaseMenu'
+import DatabaseMenuContainer from './DatabaseMenuContainer'
 
 import './_database.scss'
 
@@ -17,7 +17,7 @@ class Database extends React.Component {
     render() {
         return (
             <div className='database'>
-                <DatabaseMenu />
+                <DatabaseMenuContainer />
                 <DatabaseEditor />
             </div>
         )

@@ -19,7 +19,6 @@ class TreeItem extends React.Component {
     /* VIEW CALLBACKS */
 
     toggleExpand() {
-        console.log('here')
         this.setState(prevState => ({
             expanded: !prevState.expanded
         }))
@@ -65,7 +64,7 @@ class TreeItem extends React.Component {
             <div className={this.className}>
                 <div className='tree-item-details'>
                     {this.buildIcon()}
-                    <span className='tree-item-name'>
+                    <span className='tree-item-name' onClick={this.props.onClick} >
                         {this.props.name}
                     </span>
                 </div>
@@ -81,12 +80,14 @@ TreeItem.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     expanded: PropTypes.bool,
-    items: PropTypes.array
+    items: PropTypes.array,
+    onClick: PropTypes.func
 }
 
 TreeItem.defaultProps = {
     expanded: false,
-    items: []
+    items: [],
+    onClick: () => {}
 }
 
 export default TreeItem

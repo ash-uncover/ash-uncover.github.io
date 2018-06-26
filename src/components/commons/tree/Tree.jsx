@@ -34,12 +34,14 @@ Tree.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        items: PropTypes.array
+        items: PropTypes.array,
+        onClick: PropTypes.func
     }))
 }
 
 Tree.defaultProps = {
-    items: []
+    items: [],
+    onClick: () => {}
 }
 
 export default Tree

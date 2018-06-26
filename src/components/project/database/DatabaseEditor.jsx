@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Switch, Route } from 'react-router-dom'
 
 import ModelFormInputContainer from '../ModelFormInputContainer'
 
+import DatabaseSettings from './settings/DatabaseSettings'
 import DatabaseEditorTypesContainer from './types/DatabaseEditorTypesContainer'
 import DatabaseEditorCollectionsContainer from './collections/DatabaseEditorCollectionsContainer'
 
@@ -19,25 +21,20 @@ class DatabaseEditor extends React.Component {
     render() {
         return (
             <div className='database-editor'>
-                <h2>Database settings</h2>
-                <ModelFormInputContainer 
-                    id='project.database.config.host' 
-                    name='Database host' 
-                    edit={true} />
-                <ModelFormInputContainer 
-                    id='project.database.config.port' 
-                    name='Database port' 
-                    edit={true} />
-                <ModelFormInputContainer 
-                    id='project.database.config.name' 
-                    name='Database name' 
-                    edit={true} />
-
-                <h2>Database types</h2>
-                <DatabaseEditorTypesContainer />
-
-                <h2>Database collections</h2>
-                <DatabaseEditorCollectionsContainer />
+                <Switch>
+                    <Route exact path='/project/database'>
+                        <DatabaseSettings />
+                    </Route>
+                    <Route path='/project/database/settings'>
+                        <DatabaseSettings />
+                    </Route>
+                    <Route path='/project/database/types'>
+                        <DatabaseEditorTypesContainer />
+                    </Route>
+                    <Route path='/project/database/collections'>
+                        <DatabaseEditorCollectionsContainer />
+                    </Route>
+                </Switch>
             </div>
         )
     }

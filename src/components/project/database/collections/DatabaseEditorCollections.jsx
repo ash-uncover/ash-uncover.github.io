@@ -50,6 +50,7 @@ class DatabaseEditorCollections extends React.Component {
         let disabled = !this.state.newCollection || !this.state.newCollectionValid
         return (
             <div className='database-editor-collections'>
+                <h2>Database collections</h2>
                 { this.props.collections.map(this.buildCollection) }
                 <div className='input-group mb-3'>
                     <input 

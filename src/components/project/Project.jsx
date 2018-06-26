@@ -33,19 +33,15 @@ class Project extends React.Component {
                 <div className='project-content'>
                     <Switch>
                         <Route
-                            exact
                             path='/project/settings'
                             component={Settings} />
                         <Route
-                            exact
                             path='/project/database'
                             component={Database} />
                         <Route
-                            exact
                             path='/project/server'
                             component={Server} />
                         <Route
-                            exact
                             path='/project/front'
                             component={Front} />
                     </Switch>

@@ -50,6 +50,7 @@ class DatabaseEditorTypes extends React.Component {
         let disabled = !this.state.newType || !this.state.newTypeValid
         return (
             <div className='database-editor-types'>
+                <h2>Database types</h2>
                 { this.props.types.map(this.buildType) }
                 <div className='input-group mb-3'>
                     <input 
