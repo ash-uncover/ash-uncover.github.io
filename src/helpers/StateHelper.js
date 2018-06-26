@@ -5,6 +5,10 @@ export class StateHelper {
     constructor () {
     }
 
+    /* ******** *
+     *   DATA
+     * ******** */
+
     /* DATA TYPES */
 
     getDataTypes(state) {
@@ -13,6 +17,11 @@ export class StateHelper {
     getDataTypeIds(state) {
         return this.getDataTypes(state).map(t => t.id)
     }
+
+
+    /* ************ *
+     *   DATABASE
+     * ************ */
 
     /* TYPES */
 
@@ -63,6 +72,41 @@ export class StateHelper {
     }
     getCollectionFieldIndex(state, collectionId, fieldId) {
         return this.getCollectionFields(state, collectionId).findIndex(f => f.id === fieldId)
+    }
+
+
+    /* ********** *
+     *   SERVER
+     * ********** */
+
+    /* ENTITIES */
+
+    getEntities(state) {
+        return state.model.project.server.entities
+    }
+    getEntityIds(state) {
+        return this.getEntities(state).map(e => e.id)
+    }
+    getEntity(state, entityId) {
+        return this.getEntities(state).find(c => c.id === entityId)
+    }
+    getEntityIndex(state, entityId) {
+        return this.getEntities(state).findIndex(c => c.id === entityId)
+    }
+
+    /* ENTITY FIELDS */
+
+    getEntityFields(state, entityId) {
+        return this.getEntity(state, entityId).fields
+    }
+    getEntityFieldIds(state, entityId) {
+        return this.getEntityFields(state, entityId).map(f => f.id)
+    }
+    getEntityField(state, entityId, fieldId) {
+        return this.getEntityFields(state, entityId).find(f => f.id === fieldId)
+    }
+    getEntityFieldIndex(state, entityId, fieldId) {
+        return this.getEntityFields(state, entityId).findIndex(f => f.id === fieldId)
     }
 }
 

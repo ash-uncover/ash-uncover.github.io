@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ModelFormInputContainer from '../ModelFormInputContainer'
-import ModelFormSwitchContainer from '../ModelFormSwitchContainer'
+import ServerEntitiesContainer from './entities/ServerEntitiesContainer'
 
 import './_server.scss'
 
@@ -17,6 +17,7 @@ class ServerEditor extends React.Component {
     render() {
         return (
             <div className='server-editor'>
+
                 <h2>Server settings</h2>
                 <ModelFormInputContainer 
                     id='project.server.config.protocol' 
@@ -35,6 +36,9 @@ class ServerEditor extends React.Component {
                     name='Server base url' 
                     edit={true} />
 
+                <h2>Server entities</h2>
+                <ServerEntitiesContainer />
+                
                 <h2>Server endpoints</h2>
             </div>
         )

@@ -50,8 +50,8 @@ export const getDefaultState = () => ({
                 port: '8090',
                 baseUrl: '/api/v1'
             },
-            entities: {},
-            endpoints: {}
+            entities: [],
+            endpoints: []
         },
         front: {
             config: {
@@ -59,7 +59,7 @@ export const getDefaultState = () => ({
                 host: '127.0.0.1',
                 port: '8080'
             },
-            components: {}
+            components: []
         }
     }
 })

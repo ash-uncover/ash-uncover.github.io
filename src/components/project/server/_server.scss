@@ -30,5 +30,7 @@ $menu-width: 20rem;
         bottom: 0;
         left: $menu-width;
         right: 0;
+        padding: 1rem;
+        overflow: auto;
     }
 }

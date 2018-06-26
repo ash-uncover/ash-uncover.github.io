@@ -53,17 +53,29 @@
     ],
     "types": [
       {
-        "id": "user-type",
+        "id": "skills",
         "values": [
-          "admin",
-          "member"
+          "skillHousework",
+          "skillChildhood",
+          "skillShopping",
+          "skillNursing",
+          "skillCompagny",
+          "skillAdministrative",
+          "skillDoityourself"
         ]
       },
       {
-        "id": "project-privacy",
+        "id": "accountType",
         "values": [
-          "public",
-          "private"
+          "basic",
+          "premium"
+        ]
+      },
+      {
+        "id": "civility",
+        "values": [
+          "Mr",
+          "Mme"
         ]
       }
     ]
@@ -75,8 +87,13 @@
       "port": "8090",
       "baseUrl": "/api/v1"
     },
-    "entities": {},
-    "endpoints": {}
+    "entities": [
+      { 
+        "id": "userGet",
+        "fields": []
+      }
+    ],
+    "endpoints": []
   },
   "front": {
     "config": {
@@ -84,6 +101,6 @@
       "host": "ash-uncover.github.io",
       "port": "8080"
     },
-    "components": {}
+    "components": []
   }
 }
