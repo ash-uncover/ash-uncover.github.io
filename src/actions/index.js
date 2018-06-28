@@ -25,6 +25,7 @@ ActionRegistry.register('LOAD_MODEL_FAILURE', ['error'])
 
 ActionRegistry.register('UPDATE_MODEL', ['path', 'value'])
 
+// model - database
 ActionRegistry.register('CREATE_DATABASE_TYPE', ['id'])
 ActionRegistry.register('UPDATE_DATABASE_TYPE', ['id','newId'])
 ActionRegistry.register('DELETE_DATABASE_TYPE', ['id'])
@@ -40,3 +41,8 @@ ActionRegistry.register('DELETE_DATABASE_COLLECTION', ['collectionId'])
 ActionRegistry.register('CREATE_DATABASE_COLLECTION_FIELD', ['collectionId','fieldId'])
 ActionRegistry.register('UPDATE_DATABASE_COLLECTION_FIELD', ['collectionId','fieldId','field'])
 ActionRegistry.register('DELETE_DATABASE_COLLECTION_FIELD', ['collectionId','fieldId'])
+
+// model - server
+ActionRegistry.register('CREATE_SERVER_ENTITY', ['entityId'])
+ActionRegistry.register('UPDATE_SERVER_ENTITY', ['entityId','entity'])
+ActionRegistry.register('DELETE_SERVER_ENTITY', ['entityId'])

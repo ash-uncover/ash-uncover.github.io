@@ -29,9 +29,9 @@ class DatabaseEditorCollectionField extends React.Component {
 
     componentWillReceiveProps(props) {
         this.state.fieldId = props.fieldId
-        this.state.fieldType = this.props.fieldType
-        this.state.fieldIsArray = this.props.fieldIsArray
-    } 
+        this.state.fieldType = props.fieldType
+        this.state.fieldIsArray = props.fieldIsArray
+    }
 
     /* VIEW CALBACKS */
 

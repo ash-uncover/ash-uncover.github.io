@@ -66,7 +66,12 @@ export const getDefaultState = () => ({
 
 const reducer = (state = getDefaultState(), action) => {
     const newState = JSON.parse(JSON.stringify(state))
-    let types, type, collections, collection, fields, field, index
+    
+    let types, type
+    let collections, collection
+    let fields, field
+    let entities, entity
+    let index
 
     switch (action.type) {
     
@@ -198,6 +203,29 @@ const reducer = (state = getDefaultState(), action) => {
             action.args.fieldId
         )
         fields.splice(index, 1)
+        return newState
+
+    /* ENTITIES */
+
+    case ActionRegistry.CREATE_SERVER_ENTITY:
+        newState.project.server.entities.push({
+            id: action.args.entityId,
+            fields: []
+        })
+        return newState
+
+    case ActionRegistry.UPDATE_SERVER_ENTITY:
+        entity = newState.project.server.entities.find(entity => {
+            return entity.id === action.args.entityId
+        }) 
+        Object.assign(entity, action.args.entity)
+        return newState
+    
+    case ActionRegistry.DELETE_SERVER_ENTITY:
+        index = newState.project.server.entities.findIndex(entity => {
+            return entity.id === action.args.entityId
+        }) 
+        newState.project.server.entities.splice(index, 1)
         return newState
 
     default:

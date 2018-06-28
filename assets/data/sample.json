@@ -89,7 +89,13 @@
     },
     "entities": [
       { 
-        "id": "userGet",
+        "id": "project",
+        "collection": "projects",
+        "fields": []
+      },
+      { 
+        "id": "unlinked",
+        "collection": "",
         "fields": []
       }
     ],

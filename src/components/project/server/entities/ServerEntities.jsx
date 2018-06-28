@@ -38,11 +38,11 @@ class ServerEntities extends React.Component {
 
     /* RENDERING */
 
-    buildEntity(id, index) {
+    buildEntity(entityId, index) {
         return (
             <ServerEntityContainer 
                 key={index} 
-                id={id}  />
+                entityId={entityId}  />
         )
     }
 
