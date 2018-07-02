@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import ServerEntityExtendsContainer from './ServerEntityExtendsContainer'
+import ServerEntityFieldsContainer from './ServerEntityFieldsContainer'
+import ServerEntityCustomsContainer from './ServerEntityCustomsContainer'
+
 import './_server-entities.scss'
 
 const NO_COLLECTION = 'NO_COLLECTION'
@@ -13,21 +17,13 @@ class ServerEntity extends React.Component {
         this.state = {
             entityId: this.props.entityId,
             entityIdValid: true,
-            entityCollection: this.props.entityCollection || NO_COLLECTION,
-
-            newField: '',
-            newField: true
+            entityCollection: this.props.entityCollection || NO_COLLECTION
         }
 
         this.onDeleteEntity = this.onDeleteEntity.bind(this)
         
         this.onChangeEntityId = this.onChangeEntityId.bind(this)
         this.onChangeEntityCollection = this.onChangeEntityCollection.bind(this)
-
-        this.onNewFieldChange = this.onNewFieldChange.bind(this)        
-        this.onAddField = this.onAddField.bind(this)
-
-        this.buildField = this.buildField.bind(this)
     }
 
     /* LIFECYCLE */
@@ -69,28 +65,6 @@ class ServerEntity extends React.Component {
         this.props.onDeleteEntity()
     }
 
-    onNewFieldChange(event) {
-        this.setState({ 
-            newField: event.target.value,
-            newFieldValid: this.props.values.indexOf(event.target.value) === -1
-        })
-    }
-
-    onAddField() {
-        this.props.onAddField(this.state.newField)   
-        this.setState({ newField: '' })     
-    }
-    getValueChanger(index) {
-        return (event) => {
-            this.props.onChangeValue(index, event.target.value)
-        }
-    }
-    getValueDeleter(value) {
-        return () => {
-            this.props.onDeleteValue(value)
-        }
-    }
-
     /* RENDERING */
 
     buildCollections() {
@@ -100,28 +74,7 @@ class ServerEntity extends React.Component {
         ))
     }
 
-    buildField(value, index) {
-        const isValid = !!value && (this.props.values.filter(v => v === value).length === 1)
-        return (
-            <div key={`value-${index}`} className='input-group mb-3 type-value'>
-                <input 
-                    type='text' 
-                    className={`form-control${isValid ? '' : ' invalid'}`}
-                    value={value}
-                    onChange={this.getValueChanger(index)} />
-                <div className='input-group-append'>
-                    <button
-                        className={`btn btn-danger`}
-                        onClick={this.getValueDeleter(value)}>
-                        <i className='fas fa-times' />
-                    </button>
-                </div>
-            </div>
-        )
-    }
-
     render() {
-        const addFieldDisabled = !this.state.newField || !this.state.newFieldValid
         return (
             <div className='server-entity'>
                 <h5>{`Entity - ${this.props.entityId} (${this.props.entityCollection || NO_COLLECTION})`}</h5>
@@ -155,34 +108,24 @@ class ServerEntity extends React.Component {
                     </div>
                 </div>
 
-                <h5>{`Fields (${this.props.fields.length})`}</h5>
-                { this.props.fields.map(this.buildField) }
-                <div className='input-group mb-3'>
-                    <input 
-                        type='text' 
-                        className={`form-control${this.state.newFieldValid ? '' : ' invalid'}`}
-                        placeholder={'Type a new value...'}
-                        value={this.state.newField}
-                        onChange={this.onNewFieldChange} />
-                    <div className='input-group-append'>
-                        <button
-                            className={`btn btn-${addFieldDisabled ? 'default' : 'success'}`}
-                            disabled={addFieldDisabled}
-                            onClick={this.onAddField}>
-                            <i className='fas fa-plus' />
-                        </button>
-                    </div>
-                </div>
+                <ServerEntityExtendsContainer entityId={this.props.entityId} />
+                { this.props.entityCollection &&
+                    <ServerEntityFieldsContainer entityId={this.props.entityId} />
+                }
+                
             </div>
         )
     }
 }
+/*
+
+                <ServerEntityCustomsContainer entityId={this.props.entityId} />
+                */
+
 
 ServerEntity.propTypes = {
     entityId: PropTypes.string.isRequired,
     entityCollection: PropTypes.string,
-
-    fields: PropTypes.arrayOf(PropTypes.string.isRequired),
     
     entities: PropTypes.arrayOf(PropTypes.string.isRequired),
     collections: PropTypes.arrayOf(PropTypes.string.isRequired),
@@ -194,8 +137,7 @@ ServerEntity.propTypes = {
 ServerEntity.defaultProps = {
     entities: [],
     entityCollection: 'NO_COLLECTION',
-    collections: [],
-    fields: []
+    collections: []
 }
 
 export default ServerEntity

@@ -49,6 +49,20 @@
             "isArray": true
           }
         ]
+      }, {
+        "id": "users",
+        "fields": [
+          {
+            "id": "name",
+            "type": "string",
+            "isArray": false
+          },
+          {
+            "id": "civility",
+            "type": "civility",
+            "isArray": false
+          }
+        ]
       }
     ],
     "types": [
@@ -91,12 +105,27 @@
       { 
         "id": "project",
         "collection": "projects",
-        "fields": []
-      },
-      { 
-        "id": "unlinked",
+        "extends": [],
+        "fields": [],
+        "customs": []
+      }, { 
+        "id": "userPost",
+        "collection": "users",
+        "extends": [],
+        "fields": ["name"],
+        "customs": []
+        }, { 
+          "id": "userPut",
+          "collection": "users",
+          "extends": ["userPost"],
+          "fields": ["civility"],
+          "customs": []
+      }, { 
+        "id": "news",
         "collection": "",
-        "fields": []
+        "extends": [],
+        "fields": [],
+        "customs": []
       }
     ],
     "endpoints": []

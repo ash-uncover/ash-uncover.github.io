@@ -6,17 +6,32 @@ import HelperRegistry from 'core/HelperRegistry'
 import ServerEntityFields from './ServerEntityFields'
 
 export const mapStateToProps = (state, ownProps) => {
+    const entity = HelperRegistry.State.getEntity(state, ownProps.entityId)
+    
+    const entityFields = HelperRegistry.State.getEntityFields(state, ownProps.entityId)
+    
+    const parentFields = HelperRegistry.State.getEntityHeritedFields(state, ownProps.entityId)
+
     const props = {
         entityId: ownProps.entityId,
-        fields: HelperRegistry.State.getEntityFieldIds(state, ownProps.entityId)
+        entityFields,
+        
+        parentFields,
+
+        fields: HelperRegistry.State.getCollectionFieldIds(state, entity.collection).filter(field => {
+            return entityFields.indexOf(field) === -1 && parentFields.indexOf(field) === -1
+        })
     }
     return props
 }
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onAddField: (fieldId) => {
-            dispatch(ActionRegistry.createServerEntityField(ownProps.entityId, fieldId))
+        onAddEntityField: (fieldId) => {
+            dispatch(ActionRegistry.addServerEntityField(ownProps.entityId, fieldId))
+        },
+        onRemoveEntityField: (fieldId) => {
+            dispatch(ActionRegistry.rmvServerEntityField(ownProps.entityId, fieldId))
         }
     }
 }

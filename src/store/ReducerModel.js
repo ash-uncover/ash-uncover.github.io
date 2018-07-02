@@ -210,7 +210,9 @@ const reducer = (state = getDefaultState(), action) => {
     case ActionRegistry.CREATE_SERVER_ENTITY:
         newState.project.server.entities.push({
             id: action.args.entityId,
-            fields: []
+            extends: [],
+            fields: [],
+            customs: []
         })
         return newState
 
@@ -226,6 +228,80 @@ const reducer = (state = getDefaultState(), action) => {
             return entity.id === action.args.entityId
         }) 
         newState.project.server.entities.splice(index, 1)
+        return newState
+
+    /* ENTITY EXTENDS */
+
+    case ActionRegistry.ADD_SERVER_ENTITY_EXTEND:
+        entity = HelperRegistry.State.getEntity(
+            { model : newState }, 
+            action.args.entityId
+        )
+        if (entity.extends.indexOf(action.args.extendId) === -1) {
+            entity.extends.push(action.args.extendId)
+        }
+        return newState
+
+    case ActionRegistry.RMV_SERVER_ENTITY_EXTEND:
+        entity = HelperRegistry.State.getEntity(
+            { model : newState }, 
+            action.args.entityId
+        )
+        entity.extends.splice(entity.extends.indexOf(action.args.extendId), 1)
+        return newState
+
+    /* ENTITY FIELDS */
+
+    case ActionRegistry.ADD_SERVER_ENTITY_FIELD:
+        entity = HelperRegistry.State.getEntity(
+            { model : newState }, 
+            action.args.entityId
+        )
+        if (entity.fields.indexOf(action.args.fieldId) === -1) {
+            entity.fields.push(action.args.fieldId)
+        }
+        return newState
+
+    case ActionRegistry.RMV_SERVER_ENTITY_FIELD:
+        entity = HelperRegistry.State.getEntity(
+            { model : newState }, 
+            action.args.entityId
+        )
+        entity.fields.splice(entity.fields.indexOf(action.args.fieldId), 1)
+        return newState
+
+    /* ENTITY CUSTOMS */
+
+    case ActionRegistry.CREATE_SERVER_ENTITY_CUSTOM:
+        entity = HelperRegistry.State.getEntity(
+            { model : newState }, 
+            action.args.entityId
+        )
+        entity.fields.push({ 
+            id: action.args.customId
+        })
+        return newState
+
+    case ActionRegistry.UPDATE_SERVER_ENTITY_CUSTOM:
+        custom = HelperRegistry.State.getEntityCustom(
+            { model : newState }, 
+            action.args.entityId, 
+            action.args.customId
+        )
+        Object.assign(custom, action.args.custom)
+        return newState
+
+    case ActionRegistry.DELETE_SERVER_ENTITY_CUSTOM:
+        customs = HelperRegistry.State.getEntityCustoms(
+            { model : newState }, 
+            action.args.entityId
+        )
+        index = HelperRegistry.State.getEntityCustomIndex(
+            { model : newState }, 
+            action.args.entityId, 
+            action.args.customId
+        )
+        customs.splice(index, 1)
         return newState
 
     default:

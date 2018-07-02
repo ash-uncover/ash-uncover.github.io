@@ -94,19 +94,69 @@ export class StateHelper {
         return this.getEntities(state).findIndex(c => c.id === entityId)
     }
 
-    /* ENTITY FIELDS */
+    checkEntity(state, entityId) {
+        const entity = getEntity(state, entityId)
+        const collection = this.getCollection(state)
+        entity.extends = entity.extends.filter(state, entityId).filter(extend => {
+            const ent = this.getEntity(state, extend)
+            return !ent.collection ||  ent.collection === extend
+        })
+        entity.fields = entity.fields.filter(field => {
+            return true
+        })
+    }
+
+    /* ENTITY EXTENDS */
+
+    getEntityExtends(state, entityId) {
+        return this.getEntity(state, entityId).extends || []
+    }
+
+    /* ENTITY EXTENDS */
 
     getEntityFields(state, entityId) {
-        return this.getEntity(state, entityId).fields
+        return this.getEntity(state, entityId).fields || []
     }
-    getEntityFieldIds(state, entityId) {
-        return this.getEntityFields(state, entityId).map(f => f.id)
+
+    /* ENTITY CUSTOMS */
+
+    getEntityCustoms(state, entityId) {
+        return this.getEntity(state, entityId).customs
     }
-    getEntityField(state, entityId, fieldId) {
-        return this.getEntityFields(state, entityId).find(f => f.id === fieldId)
+    getEntityCustomIds(state, entityId) {
+        return this.getEntityCustoms(state, entityId).map(f => f.id)
     }
-    getEntityFieldIndex(state, entityId, fieldId) {
-        return this.getEntityFields(state, entityId).findIndex(f => f.id === fieldId)
+    getEntityCustom(state, entityId, customId) {
+        return this.getEntityCustoms(state, entityId).find(f => f.id === customId)
+    }
+    getEntityCustomIndex(state, entityId, customId) {
+        return this.getEntityCustoms(state, entityId).findIndex(f => f.id === customId)
+    }
+
+    /* ENTITY GLOBAL */
+
+    getEntityEffectiveFields(state, entityId) {
+        const result = []
+        result.concat(this.getEntityFields(state, entityId))
+        result.concat(this.getEntityCustomIds(state, entityId))
+        result.concat(this.getEntityHeritedFields(state, entityId))
+        return result
+    }
+
+    getEntityHeritedFields(state, entityId) {
+        return this.getEntityExtends(state, entityId).reduce((result, extend) => {
+            result.concat(this.getEntityFields(state, extend))
+            result.concat(this.getEntityHeritedFields(state, extend))
+            return result
+        }, [])
+    }
+
+    getEntityHeritedCustoms(state, entityId) {
+        return this.getEntityExtends(state, entityId).reduce((result, extend) => {
+            result.concat(this.getEntityCustomIds(state, extend))
+            result.concat(this.getEntityHeritedCustoms(state, extend))
+            return result
+        }, [])
     }
 }
 

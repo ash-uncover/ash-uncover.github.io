@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import ActionRegistry from 'core/ActionRegistry'
 import HelperRegistry from 'core/HelperRegistry'
 
-import ServerEntityField from './ServerEntityField'
+import ServerEntityField from './ServerEntityCustom'
 
 export const mapStateToProps = (state, ownProps) => {
     const props = {

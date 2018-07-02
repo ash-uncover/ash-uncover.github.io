@@ -26,23 +26,37 @@ ActionRegistry.register('LOAD_MODEL_FAILURE', ['error'])
 ActionRegistry.register('UPDATE_MODEL', ['path', 'value'])
 
 // model - database
+
+// model - database - types
 ActionRegistry.register('CREATE_DATABASE_TYPE', ['id'])
 ActionRegistry.register('UPDATE_DATABASE_TYPE', ['id','newId'])
 ActionRegistry.register('DELETE_DATABASE_TYPE', ['id'])
-
+// model - database - types - values
 ActionRegistry.register('CREATE_DATABASE_TYPE_VALUE', ['id','value'])
 ActionRegistry.register('UPDATE_DATABASE_TYPE_VALUE', ['id','index','value'])
 ActionRegistry.register('DELETE_DATABASE_TYPE_VALUE', ['id','value'])
-
+// model - database - collections
 ActionRegistry.register('CREATE_DATABASE_COLLECTION', ['collectionId'])
 ActionRegistry.register('UPDATE_DATABASE_COLLECTION', ['collectionId','collection'])
 ActionRegistry.register('DELETE_DATABASE_COLLECTION', ['collectionId'])
-
+// model - database - collections - fields
 ActionRegistry.register('CREATE_DATABASE_COLLECTION_FIELD', ['collectionId','fieldId'])
 ActionRegistry.register('UPDATE_DATABASE_COLLECTION_FIELD', ['collectionId','fieldId','field'])
 ActionRegistry.register('DELETE_DATABASE_COLLECTION_FIELD', ['collectionId','fieldId'])
 
 // model - server
+
+// model - server - entities
 ActionRegistry.register('CREATE_SERVER_ENTITY', ['entityId'])
 ActionRegistry.register('UPDATE_SERVER_ENTITY', ['entityId','entity'])
 ActionRegistry.register('DELETE_SERVER_ENTITY', ['entityId'])
+// model - server - entities - extends
+ActionRegistry.register('ADD_SERVER_ENTITY_EXTEND', ['entityId','extendId'])
+ActionRegistry.register('RMV_SERVER_ENTITY_EXTEND', ['entityId','extendId'])
+// model - server - entities - fields
+ActionRegistry.register('ADD_SERVER_ENTITY_FIELD', ['entityId','fieldId'])
+ActionRegistry.register('RMV_SERVER_ENTITY_FIELD', ['entityId','fieldId'])
+// model - server - entities - customs
+ActionRegistry.register('CREATE_SERVER_ENTITY_CUSTOM', ['entityId','customId'])
+ActionRegistry.register('UPDATE_SERVER_ENTITY_CUSTOM', ['entityId','customId','custom'])
+ActionRegistry.register('DELETE_SERVER_ENTITY_CUSTOM', ['entityId','customId'])
