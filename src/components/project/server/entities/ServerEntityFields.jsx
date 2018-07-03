@@ -84,8 +84,10 @@ class ServerEntityFields extends React.Component {
         console.log(this.props)
         return (
             <div className='server-entity-fields'>
-                <h5>{`Fields from collection (${this.props.entityFields.length})`}</h5>
+                <h5>{`Fields (${this.props.entityFields.length + this.props.parentFields.length})`}</h5>
+                <h6>{`Parent Fields  (${this.props.parentFields.length})`}</h6>
                 { this.props.parentFields.map(this.buildParent) }
+                <h6>{`Own Fields  (${this.props.entityFields.length})`}</h6>
                 { this.props.entityFields.map(this.buildField) }
                 <div className='input-group mb-3'>
                     <select 

@@ -136,26 +136,26 @@ export class StateHelper {
     /* ENTITY GLOBAL */
 
     getEntityEffectiveFields(state, entityId) {
-        const result = []
-        result.concat(this.getEntityFields(state, entityId))
-        result.concat(this.getEntityCustomIds(state, entityId))
-        result.concat(this.getEntityHeritedFields(state, entityId))
-        return result
+        return [].
+            concat(this.getEntityFields(state, entityId)).
+            concat(this.getEntityCustomIds(state, entityId)).
+            concat(this.getEntityHeritedFields(state, entityId)).
+            concat(this.getEntityHeritedCustoms(state, entityId))
     }
 
     getEntityHeritedFields(state, entityId) {
         return this.getEntityExtends(state, entityId).reduce((result, extend) => {
-            result.concat(this.getEntityFields(state, extend))
-            result.concat(this.getEntityHeritedFields(state, extend))
-            return result
+            return result.
+                concat(this.getEntityFields(state, extend)).
+                concat(this.getEntityHeritedFields(state, extend))
         }, [])
     }
 
     getEntityHeritedCustoms(state, entityId) {
         return this.getEntityExtends(state, entityId).reduce((result, extend) => {
-            result.concat(this.getEntityCustomIds(state, extend))
-            result.concat(this.getEntityHeritedCustoms(state, extend))
-            return result
+            return result.
+                concat(this.getEntityCustomIds(state, extend)).
+                concat(this.getEntityHeritedCustoms(state, extend))
         }, [])
     }
 }

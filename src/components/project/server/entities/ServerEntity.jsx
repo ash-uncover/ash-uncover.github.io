@@ -112,6 +112,7 @@ class ServerEntity extends React.Component {
                 { this.props.entityCollection &&
                     <ServerEntityFieldsContainer entityId={this.props.entityId} />
                 }
+                <ServerEntityCustomsContainer entityId={this.props.entityId} />
                 
             </div>
         )

@@ -1,70 +1,85 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ServerEntityFieldContainer from './ServerEntityCustomContainer'
+import ServerEntityCustomContainer from './ServerEntityCustomContainer'
 
 import './_server-entities.scss'
 
-class ServerEntityFields extends React.Component {
+class ServerEntityCustoms extends React.Component {
 
     constructor() {
         super(...arguments)
         
         this.state = {
-            newField: '',
-            newFieldValid: true
+            newCustom: '',
+            newCustomValid: true
         }
 
-        this.onNewFieldChange = this.onNewFieldChange.bind(this)        
-        this.onAddField = this.onAddField.bind(this)
+        this.onNewCustomChange = this.onNewCustomChange.bind(this)        
+        this.onCreateCustom = this.onCreateCustom.bind(this)
 
-        this.buildField = this.buildField.bind(this)
+        this.buildParent = this.buildParent.bind(this)
+        this.buildCustom = this.buildCustom.bind(this)
     }
 
     /* VIEW CALBACKS */
 
-    onNewFieldChange(event) {
+    onNewCustomChange(event) {
         const value = event.target.value
         this.setState({ 
-            newField: value,
-            newFieldValid: this.props.fields.indexOf(value) === -1
+            newCustom: value,
+            newCustomValid: this.props.fieldRestrictions.indexOf(value) === -1
         })
     }
 
-    onAddField() {
-        this.props.onAddField(this.state.newField)   
-        this.setState({ newField: '' })     
+    onCreateCustom() {
+        this.props.onCreateCustom(this.state.newCustom)   
+        this.setState({ newCustom: '' })     
     }
 
     /* RENDERING */
 
-    buildField(fieldId, index) {
+    buildParent(parentId, index) {
+    }
+
+    buildCustom(customId, index) {
         return (
-            <ServerEntityFieldContainer
-                key={`${this.props.entityId}-${index}`}
+            <ServerEntityCustomContainer
+                key={`${this.props.entityId}-custom-${index}`}
                 entityId={this.props.entityId}
-                fieldId={fieldId} />
+                customId={customId} />
         )
     }
 
     render() {
-        const addFieldDisabled = !this.state.newField || !this.state.newFieldValid
+        const addCustomDisabled = !this.state.newCustom || !this.state.newCustomValid
         return (
-            <div className='server-entity-fields'>
-                <h5>{`Fields (${this.props.fields.length})`}</h5>
-                { this.props.fields.map(this.buildField) }
+            <div className='server-entity-customs'>
+                <h5>{`Custom Fields (${this.props.entityCustoms.length + this.props.parentCustoms.length})`}</h5>
+                { this.props.parentCustoms.length ? 
+                    <div>
+                        <h6>{`Parent custom Fields (${this.props.parentCustoms.length})`}</h6>
+                        { this.props.parentCustoms.map(this.buildParent) }
+                    </div>
+                : null }
+                { this.props.entityCustoms.length ? 
+                    <div>
+                        <h6>{`Own custom Fields (${this.props.entityCustoms.length})`}</h6>
+                        { this.props.entityCustoms.map(this.buildCustom) }
+                    </div>
+                : null }
                 <div className='input-group mb-3'>
                     <input 
                         type='text' 
-                        className={`form-control${this.state.newFieldValid ? '' : ' invalid'}`}
+                        className={`form-control${this.state.newCustomValid ? '' : ' invalid'}`}
                         placeholder={'Type field name...'}
-                        value={this.state.newField}
-                        onChange={this.onNewFieldChange} />
+                        value={this.state.newCustom}
+                        onChange={this.onNewCustomChange} />
                     <div className='input-group-append'>
                         <button
-                            className={`btn btn-${addFieldDisabled ? 'default' : 'success'}`}
-                            disabled={addFieldDisabled}
-                            onClick={this.onAddField}>
+                            className={`btn btn-${addCustomDisabled ? 'default' : 'success'}`}
+                            disabled={addCustomDisabled}
+                            onClick={this.onCreateCustom}>
                             {'Add field'}
                         </button>
                     </div>
@@ -74,15 +89,20 @@ class ServerEntityFields extends React.Component {
     }
 }
 
-ServerEntityFields.propTypes = {
+ServerEntityCustoms.propTypes = {
     entityId: PropTypes.string.isRequired,
-    fields: PropTypes.arrayOf(PropTypes.string.isRequired),
+    entityCustoms: PropTypes.arrayOf(PropTypes.string.isRequired),
+    parentCustoms: PropTypes.arrayOf(PropTypes.string.isRequired),
 
-    onAddField: PropTypes.func.isRequired
+    fieldRestrictions: PropTypes.arrayOf(PropTypes.string.isRequired),
+
+    onCreateCustom: PropTypes.func.isRequired
 }
 
-ServerEntityFields.defaultProps = {
-    fields: []
+ServerEntityCustoms.defaultProps = {
+    entityCustoms: [],
+    parentCustoms: [],
+    fieldRestrictions: []
 }
 
-export default ServerEntityFields
+export default ServerEntityCustoms

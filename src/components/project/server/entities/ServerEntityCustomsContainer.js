@@ -6,17 +6,32 @@ import HelperRegistry from 'core/HelperRegistry'
 import ServerEntityCustoms from './ServerEntityCustoms'
 
 export const mapStateToProps = (state, ownProps) => {
+    const entityId = ownProps.entityId
+    const entity = HelperRegistry.State.getEntity(state, entityId)
+    
+    const entityCustoms = HelperRegistry.State.getEntityCustoms(state, entityId)
+    const parentCustoms = HelperRegistry.State.getEntityHeritedCustoms(state, entityId)
+
+    let fieldRestrictions = []
+    if (entity.collection) {
+        fieldRestrictions = fieldRestrictions.concat(HelperRegistry.State.getCollectionFieldIds(state, entity.collection))
+    }
+    fieldRestrictions = fieldRestrictions.concat(HelperRegistry.State.getEntityEffectiveFields(state, entityId))
+
     const props = {
-        entityId: ownProps.entityId,
-        fields: HelperRegistry.State.getEntityFieldIds(state, ownProps.entityId)
+        entityId,
+        entityCustoms,
+        parentCustoms,
+
+        fieldRestrictions
     }
     return props
 }
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onAddField: (fieldId) => {
-            dispatch(ActionRegistry.createServerEntityField(ownProps.entityId, fieldId))
+        onCreateCustom: (customId) => {
+            dispatch(ActionRegistry.createServerEntityCustom(ownProps.entityId, customId))
         }
     }
 }

@@ -17,18 +17,11 @@ export const mapStateToProps = (state, ownProps) => {
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onChangeField: (field) => {
-            dispatch(ActionRegistry.updateServerEntityField(
-                ownProps.entityId, 
-                ownProps.fieldId,
-                field
-            ))
+        onUpdateEntityCustom: (customId, custom) => {
+            dispatch(ActionRegistry.updateServerEntityCustom(ownProps.entityId, customId, custom))
         },
-        onDeleteField: () => {
-            dispatch(ActionRegistry.deleteServerEntityField(
-                ownProps.entityId,
-                ownProps.fieldId
-            ))
+        onDeleteEntityCustom: (customId) => {
+            dispatch(ActionRegistry.deleteServerEntityCustom(ownProps.entityId, customId))
         }
     }
 }
