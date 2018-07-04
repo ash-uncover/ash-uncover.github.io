@@ -5,20 +5,31 @@ import Tree from 'components/commons/tree/Tree'
 
 import './_front.scss'
 
-const TREE_ITEMS = [
-    { id: 'item1', name: 'item 1', items: [
-        { id: 'item11', name: 'item 11' },
-        { id: 'item12', name: 'item 12' },
-        { id: 'item13', name: 'item 13' }
-    ]},
-    { id: 'item2', name: 'item 2' }
-]
-
 class FrontMenu extends React.Component {
 
     constructor() {
         super(...arguments)
+
+        this.onClickSettings = this.onClickSettings.bind(this)
+        this.onClickTypes = this.onClickTypes.bind(this)
     }
+
+    get items () {
+        return [
+            { id: 'settings', name: 'Settings', onClick: this.onClickSettings },
+            { id: 'components', name: 'Components', onClick: this.onClickTypes }        ]
+    }
+
+    /* VIEW CALLBACKS */
+
+    onClickSettings() {
+        this.props.onNavigate('/project/front/settings')
+    }
+
+    onClickTypes() {
+        this.props.onNavigate('/project/front/components')
+    }
+
 
     /* RENDERING */
 
@@ -28,7 +39,7 @@ class FrontMenu extends React.Component {
                 <div className='title'>
                     Front
                 </div>
-                <Tree items={TREE_ITEMS} />
+                <Tree items={this.items} />
             </div>
         )
     }
