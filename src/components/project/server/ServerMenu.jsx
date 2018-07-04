@@ -5,19 +5,53 @@ import Tree from 'components/commons/tree/Tree'
 
 import './_server.scss'
 
-const TREE_ITEMS = [
-    { id: 'item1', name: 'item 1', items: [
-        { id: 'item11', name: 'item 11' },
-        { id: 'item12', name: 'item 12' },
-        { id: 'item13', name: 'item 13' }
-    ]},
-    { id: 'item2', name: 'item 2' }
-]
-
 class ServerMenu extends React.Component {
 
     constructor() {
         super(...arguments)
+
+        this.onClickSettings = this.onClickSettings.bind(this)
+        this.onClickEntities = this.onClickEntities.bind(this)
+        this.getEntityClicker = this.getEntityClicker.bind(this)
+        this.onClickEntity = this.onClickEntity.bind(this)
+        this.onClickEndpoints = this.onClickEndpoints.bind(this)
+        this.buildEntitiesItems = this.buildEntitiesItems.bind(this)
+    }
+
+    get items () {
+        return [
+            { id: 'settings', name: 'Settings', onClick: this.onClickSettings },
+            { id: 'entities', name: 'Entities', onClick: this.onClickEntities, items: this.props.entities.map(this.buildEntitiesItems) },
+            { id: 'endpoints', name: 'Endpoints', onClick: this.onClickEndpoints }
+        ]
+    }
+
+    /* VIEW CALLBACKS */
+
+    onClickSettings() {
+        this.props.onNavigate('/project/server/settings')
+    }
+
+    onClickEntities() {
+        this.props.onNavigate('/project/server/entities')
+    }
+
+    getEntityClicker(entityId) {
+        return () => {
+            this.onClickEntity(entityId)
+        }
+    }
+
+    onClickEntity(entityId) {
+        this.props.onNavigate('/project/server/entities/' + entityId)
+    }
+
+    onClickEndpoints() {
+        this.props.onNavigate('/project/server/endpoints')
+    }
+
+    buildEntitiesItems(entity) {
+        return {id: entity, name: entity, onClick: this.getEntityClicker(entity)}
     }
 
     /* RENDERING */
@@ -33,7 +67,7 @@ class ServerMenu extends React.Component {
                         <i className={`icon ${this.props.src}`} />
                         <span className='text'>{this.props.name}</span>
                     </div>
-                    <Tree items={TREE_ITEMS} />
+                    <Tree items={this.items} />
                 </div>
             </div>
         )
