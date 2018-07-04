@@ -2,8 +2,13 @@ import { connect } from 'react-redux'
 import ActionRegistry from 'core/ActionRegistry'
 import DatabaseMenu from './DatabaseMenu'
 
+import HelperRegistry from '../../../core/HelperRegistry'
+
 export const mapStateToProps = (state, ownProps) => {
-    return {}
+    const props = {
+        types: HelperRegistry.State.getTypeIds(state)
+    }
+    return props
 }
 
 export const mapDispatchToProps = (dispatch, ownProps) => {

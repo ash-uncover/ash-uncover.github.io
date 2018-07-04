@@ -12,16 +12,15 @@ class DatabaseMenu extends React.Component {
         this.onClickSettings = this.onClickSettings.bind(this)
         this.onClickTypes = this.onClickTypes.bind(this)
         this.onClickCollections = this.onClickCollections.bind(this)
+        this.onClickType = this.onClickType.bind(this)
+        this.buildTypesItems = this.buildTypesItems.bind(this)
+        this.getItemClicker = this.getItemClicker.bind(this)
     }
 
     get items () {
         return [
             { id: 'settings', name: 'Settings', onClick: this.onClickSettings },
-            { id: 'types', name: 'Types', onClick: this.onClickTypes, items: [
-                { id: 'item11', name: 'item 11' },
-                { id: 'item12', name: 'item 12' },
-                { id: 'item13', name: 'item 13' }
-            ]},
+            { id: 'types', name: 'Types', onClick: this.onClickTypes, items: this.props.types.map(this.buildTypesItems) },
             { id: 'item2', name: 'item 2', onClick: this.onClickCollections }
         ]
     }
@@ -36,8 +35,22 @@ class DatabaseMenu extends React.Component {
         this.props.onNavigate('/project/database/types')
     }
 
+    getItemClicker(id) {
+        return () => {
+            this.onClickType(id)
+        }
+    }
+
+    onClickType(id) {
+        this.props.onNavigate('/project/database/types/' + id)
+    }
+
     onClickCollections() {
         this.props.onNavigate('/project/database/collections')
+    }
+
+    buildTypesItems(type) {
+        return {id: type, name: type, onClick: this.getItemClicker(type)}
     }
 
     /* RENDERING */
@@ -55,9 +68,11 @@ class DatabaseMenu extends React.Component {
 }
 
 DatabaseMenu.propTypes = {
+    types: PropTypes.arrayOf(PropTypes.string)
 }
 
 DatabaseMenu.defaultProps = {
+    types: []
 }
 
 export default DatabaseMenu

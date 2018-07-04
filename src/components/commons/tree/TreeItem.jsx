@@ -18,7 +18,8 @@ class TreeItem extends React.Component {
 
     /* VIEW CALLBACKS */
 
-    toggleExpand() {
+    toggleExpand(event) {
+        event.stopPropagation()
         this.setState(prevState => ({
             expanded: !prevState.expanded
         }))
@@ -62,9 +63,9 @@ class TreeItem extends React.Component {
     render() {
         return (
             <div className={this.className}>
-                <div className='tree-item-details'>
+                <div className='tree-item-details' onClick={this.props.onClick}>
                     {this.buildIcon()}
-                    <span className='tree-item-name' onClick={this.props.onClick} >
+                    <span className='tree-item-name' >
                         {this.props.name}
                     </span>
                 </div>
