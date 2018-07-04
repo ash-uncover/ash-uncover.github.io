@@ -11,17 +11,20 @@ class DatabaseMenu extends React.Component {
         super(...arguments)
         this.onClickSettings = this.onClickSettings.bind(this)
         this.onClickTypes = this.onClickTypes.bind(this)
-        this.onClickCollections = this.onClickCollections.bind(this)
         this.onClickType = this.onClickType.bind(this)
+        this.getTypeClicker = this.getTypeClicker.bind(this)
+        this.onClickCollections = this.onClickCollections.bind(this)
+        this.onClickCollection = this.onClickCollection.bind(this)
+        this.getCollectionClicker = this.getCollectionClicker.bind(this)
         this.buildTypesItems = this.buildTypesItems.bind(this)
-        this.getItemClicker = this.getItemClicker.bind(this)
+        this.buildCollectionsItems = this.buildCollectionsItems.bind(this)
     }
 
     get items () {
         return [
             { id: 'settings', name: 'Settings', onClick: this.onClickSettings },
             { id: 'types', name: 'Types', onClick: this.onClickTypes, items: this.props.types.map(this.buildTypesItems) },
-            { id: 'item2', name: 'item 2', onClick: this.onClickCollections }
+            { id: 'collections', name: 'Collections', onClick: this.onClickCollections, items: this.props.collections.map(this.buildCollectionsItems) }
         ]
     }
 
@@ -35,7 +38,7 @@ class DatabaseMenu extends React.Component {
         this.props.onNavigate('/project/database/types')
     }
 
-    getItemClicker(id) {
+    getTypeClicker(id) {
         return () => {
             this.onClickType(id)
         }
@@ -49,8 +52,22 @@ class DatabaseMenu extends React.Component {
         this.props.onNavigate('/project/database/collections')
     }
 
+    getCollectionClicker(id) {
+        return () => {
+            this.onClickCollection(id)
+        }
+    }
+
+    onClickCollection(id) {
+        this.props.onNavigate('/project/database/collections/' + id)
+    }
+
     buildTypesItems(type) {
-        return {id: type, name: type, onClick: this.getItemClicker(type)}
+        return {id: type, name: type, onClick: this.getTypeClicker(type)}
+    }
+
+    buildCollectionsItems(collection) {
+        return {id: collection, name: collection, onClick: this.getCollectionClicker(collection)}
     }
 
     /* RENDERING */

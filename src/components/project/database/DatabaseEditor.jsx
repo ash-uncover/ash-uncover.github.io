@@ -8,6 +8,7 @@ import DatabaseSettings from './settings/DatabaseSettings'
 import DatabaseEditorTypesContainer from './types/DatabaseEditorTypesContainer'
 import DatabaseEditorTypeContainer from './types/DatabaseEditorTypeContainer'
 import DatabaseEditorCollectionsContainer from './collections/DatabaseEditorCollectionsContainer'
+import DatabaseEditorCollectionContainer from './collections/DatabaseEditorCollectionContainer'
 
 import './_database.scss'
 
@@ -35,6 +36,9 @@ class DatabaseEditor extends React.Component {
                     <Route path='/project/database/types'>
                         <DatabaseEditorTypesContainer />
                     </Route>
+                     <Route  
+                        path='/project/database/collections/:id'
+                        render={(props) => <DatabaseEditorCollectionContainer id={props.match.params.id} />} /> 
                     <Route path='/project/database/collections'>
                         <DatabaseEditorCollectionsContainer />
                     </Route>

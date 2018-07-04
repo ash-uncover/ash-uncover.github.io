@@ -6,7 +6,8 @@ import HelperRegistry from '../../../core/HelperRegistry'
 
 export const mapStateToProps = (state, ownProps) => {
     const props = {
-        types: HelperRegistry.State.getTypeIds(state)
+        types: HelperRegistry.State.getTypeIds(state),
+        collections: HelperRegistry.State.getCollectionIds(state)
     }
     return props
 }
