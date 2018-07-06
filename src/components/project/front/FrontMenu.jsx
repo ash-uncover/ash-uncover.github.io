@@ -1,48 +1,45 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import Tree from 'components/commons/tree/Tree'
 
 import './_front.scss'
 
 class FrontMenu extends React.Component {
+  constructor () {
+    super(...arguments)
 
-    constructor() {
-        super(...arguments)
+    this.onClickSettings = this.onClickSettings.bind(this)
+    this.onClickTypes = this.onClickTypes.bind(this)
+  }
 
-        this.onClickSettings = this.onClickSettings.bind(this)
-        this.onClickTypes = this.onClickTypes.bind(this)
-    }
+  get items () {
+    return [
+      { id: 'settings', name: 'Settings', onClick: this.onClickSettings },
+      { id: 'components', name: 'Components', onClick: this.onClickTypes } ]
+  }
 
-    get items () {
-        return [
-            { id: 'settings', name: 'Settings', onClick: this.onClickSettings },
-            { id: 'components', name: 'Components', onClick: this.onClickTypes }        ]
-    }
+  /* VIEW CALLBACKS */
 
-    /* VIEW CALLBACKS */
+  onClickSettings () {
+    this.props.onNavigate('/project/front/settings')
+  }
 
-    onClickSettings() {
-        this.props.onNavigate('/project/front/settings')
-    }
+  onClickTypes () {
+    this.props.onNavigate('/project/front/components')
+  }
 
-    onClickTypes() {
-        this.props.onNavigate('/project/front/components')
-    }
+  /* RENDERING */
 
-
-    /* RENDERING */
-
-    render() {
-        return (
-            <div className='front-menu'>
-                <div className='title'>
+  render () {
+    return (
+      <div className='front-menu'>
+        <div className='title'>
                     Front
-                </div>
-                <Tree items={this.items} />
-            </div>
-        )
-    }
+        </div>
+        <Tree items={this.items} />
+      </div>
+    )
+  }
 }
 
 FrontMenu.propTypes = {

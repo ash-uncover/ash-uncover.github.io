@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Switch, Route } from 'react-router-dom'
 
 import AppToolbar from 'components/AppToolbar'
@@ -9,26 +8,25 @@ import Project from './project/Project'
 import './_app.scss'
 
 class App extends React.Component {
+  /* RENDERING */
 
-    /* RENDERING */
-
-    render() {
-        return (
-            <div className='app'>
-                <AppToolbar />
-                <div className='app-content'>
-                    <Switch>
-                        <Route exact path='/'>
-                            <AppHomeContainer />
-                        </Route>
-                        <Route path='/project'>
-                            <Project />
-                        </Route>
-                    </Switch>
-                </div>
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div className='app'>
+        <AppToolbar />
+        <div className='app-content'>
+          <Switch>
+            <Route exact path='/'>
+              <AppHomeContainer />
+            </Route>
+            <Route path='/project'>
+              <Project />
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    )
+  }
 }
 
 App.propTypes = {

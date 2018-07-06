@@ -5,14 +5,14 @@ import data from 'store/ReducerData'
 import model from 'store/ReducerModel'
 
 export const reducer = combineReducers({
-    app,
-    data,
-    model
+  app,
+  data,
+  model
 })
 
 export const store = createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 export default store

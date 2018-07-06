@@ -1,26 +1,19 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import './_layout.scss'
 
 class LayoutBuilderMenu extends React.Component {
+  /* VIEW CALLBACKS */
 
-    constructor() {
-        super(...arguments)
-    }
+  /* RENDERING */
 
-    /* VIEW CALLBACKS */
-
-
-    /* RENDERING */
-
-    render() {
-        return (
-            <div className='layout-builder-menu'>
-                <div>square</div>
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div className='layout-builder-menu'>
+        <div>square</div>
+      </div>
+    )
+  }
 }
 
 LayoutBuilderMenu.propTypes = {

@@ -6,24 +6,24 @@ import HelperRegistry from 'core/HelperRegistry'
 import ServerEntities from './ServerEntities'
 
 export const mapStateToProps = (state, ownProps) => {
-    const props = {
-        entities: HelperRegistry.State.getEntityIds(state)
-    }
-    return props
+  const props = {
+    entities: HelperRegistry.State.getEntityIds(state)
+  }
+  return props
 }
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        onAddEntity: (id) => {
-            dispatch(ActionRegistry.createServerEntity(id))
-        },
-        onDeleteEntity: (id) => {
-            dispatch(ActionRegistry.deleteServerEntity(id))
-        }
+  return {
+    onAddEntity: (id) => {
+      dispatch(ActionRegistry.createServerEntity(id))
+    },
+    onDeleteEntity: (id) => {
+      dispatch(ActionRegistry.deleteServerEntity(id))
     }
+  }
 }
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ServerEntities)

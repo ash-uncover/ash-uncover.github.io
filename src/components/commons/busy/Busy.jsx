@@ -1,27 +1,21 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import BusyBars from 'components/commons/busybars/BusyBars'
 
 import './_busy.scss'
 
 class Busy extends React.Component {
+  /* LIFECYCLE */
 
-    constructor() {
-        super(...arguments)
-    }
+  /* RENDERING */
 
-    /* LIFECYCLE */
-
-    /* RENDERING */
-
-    render() {
-        return (
-            <div className='busy'>
-                <BusyBars />
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div className='busy'>
+        <BusyBars />
+      </div>
+    )
+  }
 }
 
 Busy.propTypes = {

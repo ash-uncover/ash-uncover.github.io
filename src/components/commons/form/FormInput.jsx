@@ -4,110 +4,108 @@ import PropTypes from 'prop-types'
 import './_form.scss'
 
 class FormInput extends React.Component {
+  constructor () {
+    super(...arguments)
 
-    constructor() {
-        super(...arguments)
-
-        this.state = {
-            value: this.props.value
-        }
-
-        this.onChange = this._onChange.bind(this)
-        this.onBlur = this._onBlur.bind(this)
+    this.state = {
+      value: this.props.value
     }
 
-    /* COMPONENT LIFECYCLE */
+    this.onChange = this._onChange.bind(this)
+    this.onBlur = this._onBlur.bind(this)
+  }
 
-    componentWillReceiveProps(props) {
-        this.setState({ value: props.value })
+  /* COMPONENT LIFECYCLE */
+
+  componentWillReceiveProps (props) {
+    this.setState({ value: props.value })
+  }
+
+  /* VIEW CALLBACKS */
+
+  _onChange (event) {
+    if (this.props.onChange) {
+      this.props.onChange(this.props.id, event.target.value)
+    } else {
+      this.setState({
+        value: event.target.value
+      })
     }
+  }
 
-    /* VIEW CALLBACKS */
-
-    _onChange(event) {
-        if (this.props.onChange) {
-            this.props.onChange(this.props.id, event.target.value)
-        } else {
-            this.setState({
-                value: event.target.value
-            })
-        }
+  _onBlur () {
+    if (this.props.onBlur) {
+      this.props.onBlur(this.props.id, this.state.value)
     }
+  }
 
-    _onBlur() {
-        if (this.props.onBlur) {
-            this.props.onBlur(this.props.id, this.state.value)
-        }
+  /* RENDERING */
+
+  get className () {
+    let result = 'form form-input'
+    if (this.props.className) result += ` ${this.props.className}`
+    return result
+  }
+
+  buildLabel () {
+    if (this.props.label) {
+      return (
+        <label className='form-label' htmlFor={this.props.id}>
+          {this.props.label}
+        </label>
+      )
     }
+  }
 
-    /* RENDERING */
-
-    get className() {
-        let result = 'form form-input'
-        if (this.props.className) result += ` ${this.props.className}`
-        return result
-    }
-
-    buildLabel() {
-        if (this.props.label) {
-            return (
-                <label className='form-label' htmlFor={this.props.id}>
-                    {this.props.label}
-                </label>
-            )
-        }
-    }
-
-    render() {
-        return (
-            <div className={this.className}>
-                {this.buildLabel()}
-                <input
-                    id={this.props.id}
-                    className='form-control'
-                    disabled={!this.props.edit}
-                    value={this.state.value}
-                    type={this.props.type}
-                    min={this.props.min}
-                    max={this.props.max}
-                    onChange={this.onChange}
-                    onBlur={this.onBlur} />
-            </div>
-        )
-    }
-
+  render () {
+    return (
+      <div className={this.className}>
+        {this.buildLabel()}
+        <input
+          id={this.props.id}
+          className='form-control'
+          disabled={!this.props.edit}
+          value={this.state.value}
+          type={this.props.type}
+          min={this.props.min}
+          max={this.props.max}
+          onChange={this.onChange}
+          onBlur={this.onBlur} />
+      </div>
+    )
+  }
 }
 
 FormInput.propTypes = {
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    edit: PropTypes.bool,
-    value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-        PropTypes.bool
-    ]),
-    type: PropTypes.string,
-    min: PropTypes.number,
-    max: PropTypes.number,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  edit: PropTypes.bool,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool
+  ]),
+  type: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
 
-    className: PropTypes.string,
+  className: PropTypes.string,
 
-    onBlur: PropTypes.func,
-    onChange: PropTypes.func
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func
 }
 
 FormInput.defaultProps = {
-    edit: false,
-    label: '',
-    value: '',
-    type: 'text',
-    min: undefined,
-    max: undefined,
-    className: '',
+  edit: false,
+  label: '',
+  value: '',
+  type: 'text',
+  min: undefined,
+  max: undefined,
+  className: '',
 
-    onBlur: null,
-    onChange: null
+  onBlur: null,
+  onChange: null
 }
 
 export default FormInput

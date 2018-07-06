@@ -7,9 +7,13 @@
   "author": "aSH <ash.uncover@gmail.com>",
   "license": "ISC",
   "scripts": {
-    "lint": "eslint ./src/**/*.js*",
+    "lint": "standard --fix | snazzy",
     "build": "webpack --mode production",
     "watch": "webpack-dev-server --progress --colors --history-api-fallback --mode development --output-public-path=/dist/"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "env": [ "es6", "jquery" ]  
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -20,9 +24,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
-    "eslint": "^4.19.1",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-react": "^7.7.0",
     "node-sass": "^4.8.3",
     "postcss-loader": "^2.1.5",
     "prop-types": "^15.6.1",
@@ -33,6 +34,8 @@
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "sass-loader": "^7.0.1",
+    "snazzy": "^7.1.1",
+    "standard": "^11.0.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15",

@@ -5,23 +5,23 @@ import ServerMenu from './ServerMenu'
 import HelperRegistry from '../../../core/HelperRegistry'
 
 export const mapStateToProps = (state, ownProps) => {
-    const props = {
-        entities: HelperRegistry.State.getEntityIds(state)
-    }
-    return props
+  const props = {
+    entities: HelperRegistry.State.getEntityIds(state)
+  }
+  return props
 }
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        onNavigate: (link) => {
-            dispatch(ActionRegistry.appNavigate(link))
-        },
+  return {
+    onNavigate: (link) => {
+      dispatch(ActionRegistry.appNavigate(link))
     }
+  }
 }
 
 const ServerMenuContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ServerMenu)
 
 export default ServerMenuContainer

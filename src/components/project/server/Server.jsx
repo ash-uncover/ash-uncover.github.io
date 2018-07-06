@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import ServerMenuContainer from './ServerMenuContainer'
 import ServerEditor from './ServerEditor'
@@ -7,21 +6,16 @@ import ServerEditor from './ServerEditor'
 import './_server.scss'
 
 class Server extends React.Component {
+  /* RENDERING */
 
-    constructor() {
-        super(...arguments)
-    }
-
-    /* RENDERING */
-
-    render() {
-        return (
-            <div className='server'>
-                <ServerMenuContainer />
-                <ServerEditor />
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div className='server'>
+        <ServerMenuContainer />
+        <ServerEditor />
+      </div>
+    )
+  }
 }
 
 Server.propTypes = {

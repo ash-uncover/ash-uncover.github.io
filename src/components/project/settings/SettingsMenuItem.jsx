@@ -4,27 +4,22 @@ import PropTypes from 'prop-types'
 import './_settings.scss'
 
 class SettingsMenuItem extends React.Component {
+  /* RENDERING */
 
-    constructor() {
-        super(...arguments)
-    }
-
-    /* RENDERING */
-
-    render() {
-        return (
-            <div className='settings-menu-item'>
-                <i className={`icon ${this.props.src}`} />
-                <span className='text'>{this.props.name}</span>
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div className='settings-menu-item'>
+        <i className={`icon ${this.props.src}`} />
+        <span className='text'>{this.props.name}</span>
+      </div>
+    )
+  }
 }
 
 SettingsMenuItem.propTypes = {
-    id: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 }
 
 SettingsMenuItem.defaultProps = {

@@ -1,30 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import './_layout.scss'
 
 class LayoutBuilderToolbar extends React.Component {
+  /* VIEW CALLBACKS */
 
-    constructor() {
-        super(...arguments)
-    }
+  /* RENDERING */
 
-    /* VIEW CALLBACKS */
-
-
-    /* RENDERING */
-
-    render() {
-        return (
-            <div className='layout-builder-toolbar col-12'>
-                <button className='btn btn-primary'>{'xs'}</button>
-                <button className='btn btn-primary'>{'sm'}</button>
-                <button className='btn btn-primary'>{'md'}</button>
-                <button className='btn btn-primary'>{'lg'}</button>
-                <button className='btn btn-primary'>{'xl'}</button>
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div className='layout-builder-toolbar col-12'>
+        <button className='btn btn-primary'>{'xs'}</button>
+        <button className='btn btn-primary'>{'sm'}</button>
+        <button className='btn btn-primary'>{'md'}</button>
+        <button className='btn btn-primary'>{'lg'}</button>
+        <button className='btn btn-primary'>{'xl'}</button>
+      </div>
+    )
+  }
 }
 
 LayoutBuilderToolbar.propTypes = {

@@ -4,41 +4,36 @@ import PropTypes from 'prop-types'
 import './_menu.scss'
 
 class MenuItem extends React.Component {
+  /* RENDERING */
 
-    constructor() {
-        super(...arguments)
-    }
+  get className () {
+    let result = 'menu-item'
+    if (this.props.selected) result += ' selected'
+    return result
+  }
 
-    /* RENDERING */
-
-    get className() {
-        let result = 'menu-item'
-        if (this.props.selected) result += ' selected'
-        return result
-    }
-
-    render() {
-        return (
-            <div className={this.className} onClick={this.props.onClick}>
-                <i className={`icon ${this.props.src}`} />
-                <span className='text'>
-                    {this.props.name}
-                </span>
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div className={this.className} onClick={this.props.onClick}>
+        <i className={`icon ${this.props.src}`} />
+        <span className='text'>
+          {this.props.name}
+        </span>
+      </div>
+    )
+  }
 }
 
 MenuItem.propTypes = {
-    src: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    selected: PropTypes.bool,
+  src: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  selected: PropTypes.bool,
 
-    onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 }
 
 MenuItem.defaultProps = {
-    selected: false
+  selected: false
 }
 
 export default MenuItem

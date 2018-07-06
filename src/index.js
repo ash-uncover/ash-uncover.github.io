@@ -12,11 +12,10 @@ import AppRootContainer from 'components/AppRootContainer'
 import 'bootstrap'
 import './_custom.scss'
 
-
 render(
-    <BrowserRouter>
-        <Provider store={store}>
-            <AppRootContainer />
-        </Provider>
-    </BrowserRouter>
-, document.getElementById('reactroot'));
+  <BrowserRouter>
+    <Provider store={store}>
+      <AppRootContainer />
+    </Provider>
+  </BrowserRouter>
+  , document.getElementById('reactroot'))

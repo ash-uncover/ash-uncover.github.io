@@ -1,37 +1,30 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import './_layout-elements.scss'
 
 class ElementGridRow extends React.Component {
+  /* VIEW CALLBACKS */
 
-    constructor() {
-        super(...arguments)
-    }
+  /* RENDERING */
 
-    /* VIEW CALLBACKS */
-
-
-    /* RENDERING */
-
-    render() {
-        return (
-            <div className='row element-grid-row'>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-                <div className='col-1 element-grid-col'/>
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div className='row element-grid-row'>
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+        <div className='col-1 element-grid-col' />
+      </div>
+    )
+  }
 }
 
 ElementGridRow.propTypes = {
