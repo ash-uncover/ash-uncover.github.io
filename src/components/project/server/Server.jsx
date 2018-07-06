@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ServerMenu from './ServerMenu'
+import ServerMenuContainer from './ServerMenuContainer'
 import ServerEditor from './ServerEditor'
 
 import './_server.scss'
@@ -17,7 +17,7 @@ class Server extends React.Component {
     render() {
         return (
             <div className='server'>
-                <ServerMenu />
+                <ServerMenuContainer />
                 <ServerEditor />
             </div>
         )

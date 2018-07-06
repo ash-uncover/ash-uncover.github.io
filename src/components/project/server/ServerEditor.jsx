@@ -1,8 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Switch, Route } from 'react-router-dom'
 
 import ModelFormInputContainer from '../ModelFormInputContainer'
 import ServerEntitiesContainer from './entities/ServerEntitiesContainer'
+import ServerEntityContainer from './entities/ServerEntityContainer'
+
+import ServerSettings from './settings/ServerSettings'
 
 import './_server.scss'
 
@@ -18,28 +22,23 @@ class ServerEditor extends React.Component {
         return (
             <div className='server-editor'>
 
-                <h2>Server settings</h2>
-                <ModelFormInputContainer 
-                    id='project.server.config.protocol' 
-                    name='Server protocol' 
-                    edit={true} />
-                <ModelFormInputContainer 
-                    id='project.server.config.host' 
-                    name='Server host' 
-                    edit={true} />
-                <ModelFormInputContainer 
-                    id='project.server.config.port' 
-                    name='Server port' 
-                    edit={true} />
-                <ModelFormInputContainer 
-                    id='project.server.config.baseUrl' 
-                    name='Server base url' 
-                    edit={true} />
-
-                <h2>Server entities</h2>
-                <ServerEntitiesContainer />
-                
-                <h2>Server endpoints</h2>
+                <Switch>
+                    <Route exact path='/project/server'>
+                        <ServerSettings />
+                    </Route>
+                    <Route path='/project/server/settings'>
+                        <ServerSettings />
+                    </Route>
+                    <Route  
+                        path='/project/server/entities/:entityId'
+                        render={(props) => <ServerEntityContainer entityId={props.match.params.entityId} />} /> 
+                    <Route path='/project/server/entities'>
+                        <ServerEntitiesContainer />
+                    </Route>
+                    <Route path='/project/server/endpoints'>
+                        <h2>Server endpoints</h2>
+                    </Route>
+                </Switch>
             </div>
         )
     }

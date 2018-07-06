@@ -1,15 +1,11 @@
 import { connect } from 'react-redux'
 import ActionRegistry from 'core/ActionRegistry'
-import DatabaseMenu from './DatabaseMenu'
+import FrontMenu from './FrontMenu'
 
 import HelperRegistry from '../../../core/HelperRegistry'
 
 export const mapStateToProps = (state, ownProps) => {
-    const props = {
-        types: HelperRegistry.State.getTypeIds(state),
-        collections: HelperRegistry.State.getCollectionIds(state)
-    }
-    return props
+    return {}
 }
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
@@ -20,9 +16,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const DatabaseMenuContainer = connect(
+const FrontMenuContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(DatabaseMenu)
+)(FrontMenu)
 
-export default DatabaseMenuContainer
+export default FrontMenuContainer

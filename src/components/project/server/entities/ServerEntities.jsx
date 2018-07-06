@@ -50,6 +50,7 @@ class ServerEntities extends React.Component {
         let disabled = !this.state.newEntity || !this.state.newEntityValid
         return (
             <div className='server-entities'>
+                <h2>Server entities</h2>
                 { this.props.entities.map(this.buildEntity) }
                 <div className='input-group mb-3'>
                     <input 
