@@ -121,16 +121,20 @@ export class StateHelper {
     /* ENTITY CUSTOMS */
 
     getEntityCustoms(state, entityId) {
-        return this.getEntity(state, entityId).customs
+        const entity = this.getEntity(state, entityId)
+        return entity.customs
     }
     getEntityCustomIds(state, entityId) {
-        return this.getEntityCustoms(state, entityId).map(f => f.id)
+        const customs = this.getEntityCustoms(state, entityId)
+        return customs.map(f => f.id)
     }
     getEntityCustom(state, entityId, customId) {
-        return this.getEntityCustoms(state, entityId).find(f => f.id === customId)
+        const customs = this.getEntityCustoms(state, entityId)
+        return customs.find(f => f.id === customId)
     }
     getEntityCustomIndex(state, entityId, customId) {
-        return this.getEntityCustoms(state, entityId).findIndex(f => f.id === customId)
+        const customs = this.getEntityCustoms(state, entityId)
+        return customs.findIndex(f => f.id === customId)
     }
 
     /* ENTITY GLOBAL */

@@ -9,21 +9,21 @@ export const mapStateToProps = (state, ownProps) => {
     const entityId = ownProps.entityId
     const entity = HelperRegistry.State.getEntity(state, entityId)
     
-    const entityCustoms = HelperRegistry.State.getEntityCustoms(state, entityId)
+    const entityCustoms = HelperRegistry.State.getEntityCustomIds(state, entityId)
     const parentCustoms = HelperRegistry.State.getEntityHeritedCustoms(state, entityId)
 
-    let fieldRestrictions = []
+    let idRestrictions = []
     if (entity.collection) {
-        fieldRestrictions = fieldRestrictions.concat(HelperRegistry.State.getCollectionFieldIds(state, entity.collection))
+        idRestrictions = idRestrictions.concat(HelperRegistry.State.getCollectionFieldIds(state, entity.collection))
     }
-    fieldRestrictions = fieldRestrictions.concat(HelperRegistry.State.getEntityEffectiveFields(state, entityId))
+    idRestrictions = idRestrictions.concat(HelperRegistry.State.getEntityEffectiveFields(state, entityId))
 
     const props = {
         entityId,
         entityCustoms,
         parentCustoms,
 
-        fieldRestrictions
+        idRestrictions
     }
     return props
 }

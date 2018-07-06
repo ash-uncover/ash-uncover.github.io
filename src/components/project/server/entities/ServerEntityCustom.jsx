@@ -3,46 +3,59 @@ import PropTypes from 'prop-types'
 
 import './_server-entities.scss'
 
-class ServerEntityField extends React.Component {
+class ServerEntityCustom extends React.Component {
 
     constructor() {
         super(...arguments)
         
         this.state = {
-            entityId: this.props.entityId,
+            customId: this.props.customId,
+            customType: this.props.customType,
             
-            fieldId: this.props.fieldId,
-            fieldKind: this.props.fieldKind,
-            
-            fieldIdValid: true
+            customIdValid: true
         }
 
-        this.onChangeFieldId = this.onChangeFieldId.bind(this)
-        this.onDeleteField = this.onDeleteField.bind(this)
+        this.onChangeCustomId = this.onChangeCustomId.bind(this)
+        this.onChangeCustomType = this.onChangeCustomType.bind(this)
+
+        this.onDelete = this.onDelete.bind(this)
     }
 
     /* LIFECYCLE */
 
     componentWillReceiveProps(props) {
-        if (this.state.fieldId !== props.fieldId) {
-            this.state.fieldId = props.fieldId
+        if (this.state.customId !== props.customId) {
+            this.state.customId = props.customId
         }
     }
 
     /* VIEW CALBACKS */
 
-    onChangeFieldId(event) {
-        const fieldId = event.target.value
-        const fieldIdValid = !!fieldId && this.props.fields.indexOf(fieldId) === -1
-        this.setState({ fieldId, fieldIdValid })
-        if (fieldIdValid) {
-            this.props.onChangeField({
-                id: fieldId
+    onChangeCustomId(event) {
+        const customId = event.target.value
+        const customIdValid = Boolean(customId) && this.props.nameRestrictions.indexOf(customId) === -1
+        this.setState({ customId, customIdValid })
+        if (customIdValid) {
+            this.props.onUpdate({
+                id: customId,
+                type: this.state.customType
             })
         }
     }
-    onDeleteField() {
-        this.props.onDeleteField()
+
+    onChangeCustomType(event) {
+        const customType = event.target.value
+        this.setState({ customType })
+        if (this.state.customIdValid) {
+            this.props.onUpdate({
+                id: this.state.customId,
+                type: customType
+            })
+        }
+    }
+
+    onDelete() {
+        this.props.onDelete()
     }
 
     /* RENDERING */
@@ -50,38 +63,59 @@ class ServerEntityField extends React.Component {
     render() {
         return (
             <div className='server-entity-field'>
-                <h5>{`Field ${this.props.fieldId}`}</h5>
-                <div className='input-group mb-3 type-value'>
-                    <input 
-                        type='text' 
-                        className={`form-control${this.state.fieldIdValid ? '' : ' invalid'}`}
-                        value={this.state.fieldId}
-                        onChange={this.onChangeFieldId} />
-                    <div className='input-group-append'>
-                        <button
-                            className={`btn btn-danger`}
-                            onClick={this.onDeleteField}>
-                            <i className='fas fa-times' />
-                        </button>
+                <p>{`Custom field ${this.props.customId}`}</p>
+                <div className='form-group row'>
+                    <label htmlFor='form-field-name' className='col-2 col-form-label'>
+                        {'Name'}
+                    </label>
+                    <div className='input-group col-10'>
+                        <input 
+                            type='text' 
+                            className={`form-control${this.state.customIdValid ? '' : ' invalid'}`}
+                            value={this.state.customId}
+                            onChange={this.onChangeCustomId} />
+                        <div className='input-group-append'>
+                            <button
+                                className={`btn btn-danger`}
+                                onClick={this.onDelete}>
+                                <i className='fas fa-times' />
+                            </button>
+                        </div>
                     </div>
-                </div> 
+                </div>
+                <div className='form-group row'>
+                <   label htmlFor='form-field-type' className='col-2 col-form-label'>
+                        {'Type'}
+                    </label>
+                    <div className='col-10'>
+                        <select 
+                            className='form-control' 
+                            id='form-field-type' 
+                            value={this.state.customType}
+                            onChange={this.onChangeCustomType}>
+                            { this.props.typeRestrictions.map(type => <option key={type}>{type}</option>)}
+                        </select>
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
-ServerEntityField.propTypes = {
+ServerEntityCustom.propTypes = {
     entityId: PropTypes.string.isRequired,
-    fieldId: PropTypes.string.isRequired,
+    customId: PropTypes.string.isRequired,
 
-    fields: PropTypes.arrayOf(PropTypes.string.isRequired),
+    nameRestrictions: PropTypes.arrayOf(PropTypes.string.isRequired),
+    typeRestrictions: PropTypes.arrayOf(PropTypes.string.isRequired),
 
-    onChangeField: PropTypes.func.isRequired,
-    onDeleteField: PropTypes.func.isRequired
+    onUpdate: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired
 }
 
-ServerEntityField.defaultProps = {
-    fields: []
+ServerEntityCustom.defaultProps = {
+    nameRestrictions: [],
+    typeRestrictions: []
 }
 
-export default ServerEntityField
+export default ServerEntityCustom

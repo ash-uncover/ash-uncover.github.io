@@ -28,7 +28,7 @@ class ServerEntityCustoms extends React.Component {
         const value = event.target.value
         this.setState({ 
             newCustom: value,
-            newCustomValid: this.props.fieldRestrictions.indexOf(value) === -1
+            newCustomValid: this.props.idRestrictions.indexOf(value) === -1
         })
     }
 
@@ -40,6 +40,15 @@ class ServerEntityCustoms extends React.Component {
     /* RENDERING */
 
     buildParent(parentId, index) {
+        return(
+            <div
+                className='input-group'
+                key={`${this.props.entityId}-custom-parent-${index}`}>
+                <span className={`form-control`}>
+                    {parentId}
+                </span>
+            </div>
+        )
     }
 
     buildCustom(customId, index) {
@@ -52,6 +61,7 @@ class ServerEntityCustoms extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         const addCustomDisabled = !this.state.newCustom || !this.state.newCustomValid
         return (
             <div className='server-entity-customs'>
@@ -72,7 +82,7 @@ class ServerEntityCustoms extends React.Component {
                     <input 
                         type='text' 
                         className={`form-control${this.state.newCustomValid ? '' : ' invalid'}`}
-                        placeholder={'Type field name...'}
+                        placeholder={'Type custom field name...'}
                         value={this.state.newCustom}
                         onChange={this.onNewCustomChange} />
                     <div className='input-group-append'>
@@ -80,7 +90,7 @@ class ServerEntityCustoms extends React.Component {
                             className={`btn btn-${addCustomDisabled ? 'default' : 'success'}`}
                             disabled={addCustomDisabled}
                             onClick={this.onCreateCustom}>
-                            {'Add field'}
+                            {'Add custom field'}
                         </button>
                     </div>
                 </div>
@@ -94,7 +104,7 @@ ServerEntityCustoms.propTypes = {
     entityCustoms: PropTypes.arrayOf(PropTypes.string.isRequired),
     parentCustoms: PropTypes.arrayOf(PropTypes.string.isRequired),
 
-    fieldRestrictions: PropTypes.arrayOf(PropTypes.string.isRequired),
+    idRestrictions: PropTypes.arrayOf(PropTypes.string.isRequired),
 
     onCreateCustom: PropTypes.func.isRequired
 }
@@ -102,7 +112,7 @@ ServerEntityCustoms.propTypes = {
 ServerEntityCustoms.defaultProps = {
     entityCustoms: [],
     parentCustoms: [],
-    fieldRestrictions: []
+    idRestrictions: []
 }
 
 export default ServerEntityCustoms

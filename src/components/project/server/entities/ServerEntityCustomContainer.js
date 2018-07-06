@@ -3,25 +3,35 @@ import { connect } from 'react-redux'
 import ActionRegistry from 'core/ActionRegistry'
 import HelperRegistry from 'core/HelperRegistry'
 
-import ServerEntityField from './ServerEntityCustom'
+import ServerEntityCustom from './ServerEntityCustom'
 
 export const mapStateToProps = (state, ownProps) => {
+    const entityId = ownProps.entityId
+    const customId = ownProps.customId
+    const custom = HelperRegistry.State.getEntityCustom(state, entityId, customId)
+
     const props = {
-        entityId: ownProps.entityId,
-        fieldId: ownProps.fieldId,
-        
-        fields: []
+        entityId,
+        customId,
+        customType: custom.type,
+
+        idRestrictions: [],
+        typeRestrictions: [].
+            concat(HelperRegistry.State.getDataTypeIds(state)).
+            concat(HelperRegistry.State.getTypeIds(state))
     }
     return props
 }
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
+    const entityId = ownProps.entityId
+    const customId = ownProps.customId
     return {
-        onUpdateEntityCustom: (customId, custom) => {
-            dispatch(ActionRegistry.updateServerEntityCustom(ownProps.entityId, customId, custom))
+        onUpdate: (custom) => {
+            dispatch(ActionRegistry.updateServerEntityCustom(entityId, customId, custom))
         },
-        onDeleteEntityCustom: (customId) => {
-            dispatch(ActionRegistry.deleteServerEntityCustom(ownProps.entityId, customId))
+        onDelete: () => {
+            dispatch(ActionRegistry.deleteServerEntityCustom(entityId, customId))
         }
     }
 }
@@ -29,4 +39,4 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ServerEntityField)
+)(ServerEntityCustom)

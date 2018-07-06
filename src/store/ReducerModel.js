@@ -70,6 +70,7 @@ const reducer = (state = getDefaultState(), action) => {
     let types, type
     let collections, collection
     let fields, field
+    let customs, custom
     let entities, entity
     let index
 
@@ -277,8 +278,9 @@ const reducer = (state = getDefaultState(), action) => {
             { model : newState }, 
             action.args.entityId
         )
-        entity.fields.push({ 
-            id: action.args.customId
+        entity.customs.push({ 
+            id: action.args.customId,
+            type: 'string'
         })
         return newState
 

@@ -113,7 +113,9 @@
         "collection": "users",
         "extends": [],
         "fields": ["name"],
-        "customs": []
+        "customs": [
+          { "id": "token", "type": "string"}
+        ]
         }, { 
           "id": "userPut",
           "collection": "users",

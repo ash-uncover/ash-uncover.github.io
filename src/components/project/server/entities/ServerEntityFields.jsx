@@ -47,7 +47,7 @@ class ServerEntityFields extends React.Component {
 
     buildParent(parentId, index) {
         return(
-            <div key={`parents-${index}`} className='input-group'>
+            <div key={`fields-parents-${index}`} className='input-group'>
                 <span className={`form-control`}>
                     {parentId}
                 </span>
@@ -81,14 +81,21 @@ class ServerEntityFields extends React.Component {
 
     render() {
         const addFieldDisabled = !this.state.newField
-        console.log(this.props)
         return (
             <div className='server-entity-fields'>
-                <h5>{`Fields (${this.props.entityFields.length + this.props.parentFields.length})`}</h5>
-                <h6>{`Parent Fields  (${this.props.parentFields.length})`}</h6>
-                { this.props.parentFields.map(this.buildParent) }
-                <h6>{`Own Fields  (${this.props.entityFields.length})`}</h6>
-                { this.props.entityFields.map(this.buildField) }
+                <h5>{`Collection Fields (${this.props.entityFields.length + this.props.parentFields.length})`}</h5>
+                { this.props.parentFields.length ? 
+                    <div>
+                        <h6>{`Parent Fields  (${this.props.parentFields.length})`}</h6>
+                        { this.props.parentFields.map(this.buildParent) }
+                    </div>
+                : null }
+                { this.props.entityFields.length ? 
+                    <div>
+                        <h6>{`Own Fields  (${this.props.entityFields.length})`}</h6>
+                        { this.props.entityFields.map(this.buildField) }
+                    </div>
+                : null }
                 <div className='input-group mb-3'>
                     <select 
                         className='form-control' 
