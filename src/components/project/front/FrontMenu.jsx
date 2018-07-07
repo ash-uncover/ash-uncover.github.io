@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Tree from 'components/commons/tree/Tree'
 
@@ -34,7 +35,7 @@ class FrontMenu extends React.Component {
     return (
       <div className='front-menu'>
         <div className='title'>
-                    Front
+          {'Front'}
         </div>
         <Tree items={this.items} />
       </div>
@@ -43,6 +44,7 @@ class FrontMenu extends React.Component {
 }
 
 FrontMenu.propTypes = {
+  onNavigate: PropTypes.func.isRequired
 }
 
 FrontMenu.defaultProps = {

@@ -11,13 +11,13 @@ class TreeItem extends React.Component {
       expanded: this.props.expanded
     }
 
-    this.toggleExpand = this.toggleExpand.bind(this)
+    this.onToggleExpand = this.onToggleExpand.bind(this)
     this.buildItem = this.buildItem.bind(this)
   }
 
   /* VIEW CALLBACKS */
 
-  toggleExpand (event) {
+  onToggleExpand (event) {
     event.stopPropagation()
     this.setState(prevState => ({
       expanded: !prevState.expanded
@@ -37,19 +37,19 @@ class TreeItem extends React.Component {
     if (this.props.items.length) {
       if (this.state.expanded) {
         return (
-          <button className='tree-item-button' onClick={this.toggleExpand}>
+          <button type='button' className='tree-item-button' onClick={this.onToggleExpand}>
             <i className='far fa-minus-square' />
           </button>
         )
       }
       return (
-        <button className='tree-item-button' onClick={this.toggleExpand}>
+        <button type='button' className='tree-item-button' onClick={this.onToggleExpand}>
           <i className='far fa-plus-square' />
         </button>
       )
     }
     return (
-      <button className='tree-item-button'>
+      <button type='button' className='tree-item-button'>
         <i className='fas fa-circle' />
       </button>
     )

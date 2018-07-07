@@ -8,6 +8,7 @@ import './_database.scss'
 class DatabaseMenu extends React.Component {
   constructor () {
     super(...arguments)
+
     this.onClickSettings = this.onClickSettings.bind(this)
     this.onClickTypes = this.onClickTypes.bind(this)
     this.onClickType = this.onClickType.bind(this)
@@ -22,8 +23,8 @@ class DatabaseMenu extends React.Component {
   get items () {
     return [
       { id: 'settings', name: 'Settings', onClick: this.onClickSettings },
-      { id: 'types', name: 'Types', onClick: this.onClickTypes, items: this.props.types.map(this.buildTypesItems) },
-      { id: 'collections', name: 'Collections', onClick: this.onClickCollections, items: this.props.collections.map(this.buildCollectionsItems) }
+      { id: 'collections', name: 'Collections', onClick: this.onClickCollections, items: this.props.collections.map(this.buildCollectionsItems) },
+      { id: 'types', name: 'Types', onClick: this.onClickTypes, items: this.props.types.map(this.buildTypesItems) }
     ]
   }
 
@@ -75,7 +76,7 @@ class DatabaseMenu extends React.Component {
     return (
       <div className='database-menu'>
         <div className='title'>
-                    Database
+          {'Database'}
         </div>
         <Tree items={this.items} />
       </div>
@@ -84,10 +85,14 @@ class DatabaseMenu extends React.Component {
 }
 
 DatabaseMenu.propTypes = {
-  types: PropTypes.arrayOf(PropTypes.string)
+  collections: PropTypes.arrayOf(PropTypes.string),
+  types: PropTypes.arrayOf(PropTypes.string),
+
+  onNavigate: PropTypes.func.isRequired
 }
 
 DatabaseMenu.defaultProps = {
+  collections: [],
   types: []
 }
 

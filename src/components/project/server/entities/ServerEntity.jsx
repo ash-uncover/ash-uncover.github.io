@@ -86,6 +86,7 @@ class ServerEntity extends React.Component {
             onChange={this.onChangeEntityId} />
           <div className='input-group-append'>
             <button
+              type='button'
               className={`btn btn-danger`}
               onClick={this.onDeleteEntity}>
               {'Delete entity'}

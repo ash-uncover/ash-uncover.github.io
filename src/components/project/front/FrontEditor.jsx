@@ -19,7 +19,7 @@ class FrontEditor extends React.Component {
             <FrontSettings />
           </Route>
           <Route path='/project/front/components'>
-            <h2>Front components</h2>
+            <h2>{'Front components'}</h2>
           </Route>
         </Switch>
       </div>

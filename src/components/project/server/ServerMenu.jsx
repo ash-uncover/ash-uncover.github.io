@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Tree from 'components/commons/tree/Tree'
 
@@ -58,13 +59,9 @@ class ServerMenu extends React.Component {
     return (
       <div className='server-menu'>
         <div className='title'>
-                    Server
+          {'Server'}
         </div>
         <div className='items'>
-          <div className='server-menu-item'>
-            <i className={`icon ${this.props.src}`} />
-            <span className='text'>{this.props.name}</span>
-          </div>
           <Tree items={this.items} />
         </div>
       </div>
@@ -73,9 +70,13 @@ class ServerMenu extends React.Component {
 }
 
 ServerMenu.propTypes = {
+  entities: PropTypes.arrayOf(PropTypes.string.isRequired),
+
+  onNavigate: PropTypes.func.isRequired
 }
 
 ServerMenu.defaultProps = {
+  entities: []
 }
 
 export default ServerMenu

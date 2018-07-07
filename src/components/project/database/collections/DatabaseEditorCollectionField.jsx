@@ -107,6 +107,7 @@ class DatabaseEditorCollectionField extends React.Component {
               onBlur={this.onBlurFieldId} />
             <div className='input-group-append'>
               <button
+                type='button'
                 className={`btn btn-danger`}
                 onClick={this.onDeleteField}>
                 {'Delete field'}

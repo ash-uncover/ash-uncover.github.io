@@ -62,6 +62,7 @@ class ServerEntityFields extends React.Component {
         </span>
         <div className='input-group-append'>
           <button
+            type='button'
             className={`btn btn-danger`}
             onClick={this.getFieldDeleter(fieldId)}>
             {'Remove field'}
@@ -84,17 +85,15 @@ class ServerEntityFields extends React.Component {
       <div className='server-entity-fields'>
         <h5>{`Collection Fields (${this.props.entityFields.length + this.props.parentFields.length})`}</h5>
         { this.props.parentFields.length
-          ? <div>
-            <h6>{`Parent Fields  (${this.props.parentFields.length})`}</h6>
-            { this.props.parentFields.map(this.buildParent) }
-          </div>
-          : null }
+          ? [
+            <h6 key='title'>{`Parent Fields  (${this.props.parentFields.length})`}</h6>,
+            this.props.parentFields.map(this.buildParent)
+          ] : null }
         { this.props.entityFields.length
-          ? <div>
-            <h6>{`Own Fields  (${this.props.entityFields.length})`}</h6>
-            { this.props.entityFields.map(this.buildField) }
-          </div>
-          : null }
+          ? [
+            <h6 key='title'>{`Own Fields  (${this.props.entityFields.length})`}</h6>,
+            this.props.entityFields.map(this.buildField)
+          ] : null }
         <div className='input-group mb-3'>
           <select
             className='form-control'
@@ -105,6 +104,7 @@ class ServerEntityFields extends React.Component {
           </select>
           <div className='input-group-append'>
             <button
+              type='button'
               className={`btn btn-${addFieldDisabled ? 'default' : 'success'}`}
               disabled={addFieldDisabled}
               onClick={this.onAddField}>
@@ -118,7 +118,6 @@ class ServerEntityFields extends React.Component {
 }
 
 ServerEntityFields.propTypes = {
-  entityId: PropTypes.string.isRequired,
   entityFields: PropTypes.arrayOf(PropTypes.string.isRequired),
 
   parentFields: PropTypes.arrayOf(PropTypes.string.isRequired),

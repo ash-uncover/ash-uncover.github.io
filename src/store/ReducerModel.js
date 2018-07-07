@@ -71,7 +71,7 @@ const reducer = (state = getDefaultState(), action) => {
     /* MODEL */
 
     case ActionRegistry.USE_SAMPLE:
-      newState.project = action.args.project
+      newState.project = action.args.sample
       return newState
 
     case ActionRegistry.LOAD_MODEL_REQUEST:

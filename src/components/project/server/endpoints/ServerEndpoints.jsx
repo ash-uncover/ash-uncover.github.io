@@ -49,7 +49,7 @@ class ServerEntities extends React.Component {
     let disabled = !this.state.newEntity || !this.state.newEntityValid
     return (
       <div className='server-entities'>
-        <h2>Server entities</h2>
+        <h2>{'Server endpoints'}</h2>
         { this.props.entities.map(this.buildEntity) }
         <div className='input-group mb-3'>
           <input
@@ -60,6 +60,7 @@ class ServerEntities extends React.Component {
             onChange={this.onNewEntityChange} />
           <div className='input-group-append'>
             <button
+              type='button'
               className={`btn btn-${disabled ? 'default' : 'primary'}`}
               disabled={disabled}
               onClick={this.onCreateEntity}>

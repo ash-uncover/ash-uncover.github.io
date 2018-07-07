@@ -10,7 +10,7 @@ class FrontSettings extends React.Component {
   render () {
     return (
       <div className='front-settings'>
-        <h2>Front settings</h2>
+        <h2>{'Front settings'}</h2>
         <ModelFormInputContainer
           id='project.front.config.protocol'
           name='Front protocol'

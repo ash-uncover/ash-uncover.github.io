@@ -39,8 +39,7 @@ Tree.propTypes = {
 }
 
 Tree.defaultProps = {
-  items: [],
-  onClick: () => {}
+  items: []
 }
 
 export default Tree

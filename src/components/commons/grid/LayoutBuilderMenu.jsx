@@ -10,7 +10,7 @@ class LayoutBuilderMenu extends React.Component {
   render () {
     return (
       <div className='layout-builder-menu'>
-        <div>square</div>
+        <div>{'square'}</div>
       </div>
     )
   }

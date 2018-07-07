@@ -49,7 +49,7 @@ class DatabaseEditorCollections extends React.Component {
     let disabled = !this.state.newCollection || !this.state.newCollectionValid
     return (
       <div className='database-editor-collections'>
-        <h2>Database collections</h2>
+        <h2>{'Database collections'}</h2>
         { this.props.collections.map(this.buildCollection) }
         <div className='input-group mb-3'>
           <input
@@ -60,6 +60,7 @@ class DatabaseEditorCollections extends React.Component {
             onChange={this.onNewCollectionChange} />
           <div className='input-group-append'>
             <button
+              type='button'
               className={`btn btn-${disabled ? 'default' : 'primary'}`}
               disabled={disabled}
               onClick={this.onCreateCollection}>

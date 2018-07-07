@@ -29,7 +29,7 @@ class ServerEditor extends React.Component {
             <ServerEntitiesContainer />
           </Route>
           <Route path='/project/server/endpoints'>
-            <h2>Server endpoints</h2>
+            <h2>{'Server endpoints'}</h2>
           </Route>
         </Switch>
       </div>

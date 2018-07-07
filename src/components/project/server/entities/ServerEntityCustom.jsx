@@ -75,6 +75,7 @@ class ServerEntityCustom extends React.Component {
               onChange={this.onChangeCustomId} />
             <div className='input-group-append'>
               <button
+                type='button'
                 className={`btn btn-danger`}
                 onClick={this.onDelete}>
                 <i className='fas fa-times' />
@@ -102,8 +103,8 @@ class ServerEntityCustom extends React.Component {
 }
 
 ServerEntityCustom.propTypes = {
-  entityId: PropTypes.string.isRequired,
   customId: PropTypes.string.isRequired,
+  customType: PropTypes.string.isRequired,
 
   nameRestrictions: PropTypes.arrayOf(PropTypes.string.isRequired),
   typeRestrictions: PropTypes.arrayOf(PropTypes.string.isRequired),

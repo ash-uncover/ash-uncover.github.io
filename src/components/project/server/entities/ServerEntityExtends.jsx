@@ -52,6 +52,7 @@ class ServerEntityExtends extends React.Component {
         </span>
         <div className='input-group-append'>
           <button
+            type='button'
             className={`btn btn-danger`}
             onClick={this.getExtendDeleter(extendId)}>
             {'Remove extend'}
@@ -84,6 +85,7 @@ class ServerEntityExtends extends React.Component {
           </select>
           <div className='input-group-append'>
             <button
+              type='button'
               className={`btn btn-${addExtendDisabled ? 'default' : 'success'}`}
               disabled={addExtendDisabled}
               onClick={this.onAddExtend}>
@@ -97,7 +99,6 @@ class ServerEntityExtends extends React.Component {
 }
 
 ServerEntityExtends.propTypes = {
-  entityId: PropTypes.string.isRequired,
   entityExtends: PropTypes.arrayOf(PropTypes.string.isRequired),
 
   extends: PropTypes.arrayOf(PropTypes.string.isRequired),

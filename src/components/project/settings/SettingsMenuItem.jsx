@@ -17,7 +17,6 @@ class SettingsMenuItem extends React.Component {
 }
 
 SettingsMenuItem.propTypes = {
-  id: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 }

@@ -82,6 +82,7 @@ class DatabaseEditorType extends React.Component {
           onChange={this.getValueChanger(index)} />
         <div className='input-group-append'>
           <button
+            type='button'
             className={`btn btn-danger`}
             onClick={this.getValueDeleter(value)}>
             <i className='fas fa-times' />
@@ -105,6 +106,7 @@ class DatabaseEditorType extends React.Component {
             onChange={this.onChangeType} />
           <div className='input-group-append'>
             <button
+              type='button'
               className={`btn btn-danger`}
               onClick={this.onDeleteType}>
               {'Delete type'}
@@ -123,6 +125,7 @@ class DatabaseEditorType extends React.Component {
             onChange={this.onNewValueChange} />
           <div className='input-group-append'>
             <button
+              type='button'
               className={`btn btn-${addValueDisabled ? 'default' : 'success'}`}
               disabled={addValueDisabled}
               onClick={this.onAddValue}>
@@ -149,6 +152,7 @@ DatabaseEditorType.propTypes = {
 }
 
 DatabaseEditorType.defaultProps = {
+  types: [],
   values: []
 }
 

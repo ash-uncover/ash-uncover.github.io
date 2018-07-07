@@ -12,15 +12,15 @@ class SettingsEditor extends React.Component {
     return (
       <div className='settings-editor'>
 
-        <h2>Global Settings</h2>
+        <h2>{'Global Settings'}</h2>
 
-        <h3>General information</h3>
+        <h3>{'General information'}</h3>
         <ModelFormInputContainer
           id='project.name'
           name='Project name'
           edit />
 
-        <h3>Repository</h3>
+        <h3>{'Repository'}</h3>
         <ModelFormInputContainer
           id='project.github.workspace'
           name='Repository workspace'
@@ -30,9 +30,9 @@ class SettingsEditor extends React.Component {
           name='Repository name'
           edit />
 
-        <h2>Modules</h2>
+        <h2>{'Modules'}</h2>
 
-        <h3>Authentication module</h3>
+        <h3>{'Authentication module'}</h3>
         <ModelFormSwitchContainer
           id='project.modules.auth.use'
           name='use'
@@ -42,7 +42,7 @@ class SettingsEditor extends React.Component {
           name='Mail verification'
           edit />
 
-        <h3>Mail module</h3>
+        <h3>{'Mail module'}</h3>
         <ModelFormSwitchContainer
           id='project.modules.mail.use'
           name='use'
@@ -68,7 +68,7 @@ class SettingsEditor extends React.Component {
           name='Username'
           edit />
 
-        <h3>Googlemap module</h3>
+        <h3>{'Googlemap module'}</h3>
         <ModelFormSwitchContainer
           id='project.modules.googlemap.use'
           name='use'

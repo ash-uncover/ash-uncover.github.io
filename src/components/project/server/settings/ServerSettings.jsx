@@ -10,7 +10,7 @@ class ServerSettings extends React.Component {
   render () {
     return (
       <div className='server-settings'>
-        <h2>Server settings</h2>
+        <h2>{'Server settings'}</h2>
         <ModelFormInputContainer
           id='project.server.config.protocol'
           name='Server protocol'

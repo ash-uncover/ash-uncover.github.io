@@ -11,19 +11,25 @@ class ProjectMenuItem extends React.Component {
     if (this.props.selected) result += ' selected'
     return result
   }
+
   render () {
     return (
-      <button className={`btn btn-dark ${this.className}`} onClick={this.props.onNavigate}>
-        <i className={`icon ${this.props.src}`} alt={this.props.name} />
+      <button
+        type='button'
+        className={`btn btn-dark ${this.className}`}
+        onClick={this.props.onNavigate}>
+        <i
+          className={`icon ${this.props.src}`}
+          alt={this.props.name} />
       </button>
     )
   }
 }
 
 ProjectMenuItem.propTypes = {
-  id: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
 
   onNavigate: PropTypes.func.isRequired
 }

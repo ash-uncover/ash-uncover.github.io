@@ -10,7 +10,7 @@ class DatabaseSettings extends React.Component {
   render () {
     return (
       <div className='database-settings'>
-        <h2>Database settings</h2>
+        <h2>{'Database settings'}</h2>
         <ModelFormInputContainer
           id='project.database.config.host'
           name='Database host'

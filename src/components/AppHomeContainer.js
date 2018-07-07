@@ -3,10 +3,12 @@ import ActionRegistry from 'core/ActionRegistry'
 
 import AppHome from 'components/AppHome'
 
+let sampleGetter
+
 export const mapStateToProps = (state, ownProps) => {
+  sampleGetter = () => state.data.sample
   const props = {
-    busy: state.model.loading,
-    sample: state.data.sample
+    busy: state.model.loading
   }
   return props
 }
@@ -25,8 +27,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
     onLoadModelFailure: (error) => {
       dispatch(ActionRegistry.loadModelFailure(error))
     },
-    onUseSample: (sample) => {
-      dispatch(ActionRegistry.useSample(sample))
+    onUseSample: () => {
+      console.log(sampleGetter())
+      dispatch(ActionRegistry.useSample(sampleGetter()))
     }
   }
 }

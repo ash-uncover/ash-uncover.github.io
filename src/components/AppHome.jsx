@@ -55,21 +55,21 @@ class AppHome extends React.Component {
     }
   }
   onLoadSample () {
-    this.props.onUseSample(this.props.sample)
+    this.props.onUseSample()
     this.props.onNavigate('/project/settings')
   }
 
   render () {
     return (
       <div className='app-home'>
-        <button className='app-home-item' onClick={this.onNewProject}>
+        <button type='button' className='app-home-item' onClick={this.onNewProject}>
           <i className='icon fas fa-plus-square' />
-          <span className='text'>New Project</span>
+          <span className='text'>{'New Project'}</span>
         </button>
         <span>
           <label className='app-home-item' htmlFor='import-project'>
             <i className='icon fas fa-download' />
-            <span className='text'>Import Project</span>
+            <span className='text'>{'Import Project'}</span>
           </label>
           <input
             className='hidden'
@@ -79,9 +79,9 @@ class AppHome extends React.Component {
             onChange={this.onImportProject}
             accept={['*.json']} />
         </span>
-        <button className='app-home-item' onClick={this.onLoadSample}>
+        <button type='button' className='app-home-item' onClick={this.onLoadSample}>
           <i className='icon fas fa-file-upload' />
-          <span className='text'>Load Sample</span>
+          <span className='text'>{'Load Sample'}</span>
         </button>
         { this.props.busy ? <Busy /> : null }
       </div>
@@ -93,6 +93,8 @@ AppHome.propTypes = {
   busy: PropTypes.bool,
 
   onNavigate: PropTypes.func.isRequired,
+
+  onUseSample: PropTypes.func.isRequired,
 
   onLoadModelRequest: PropTypes.func.isRequired,
   onLoadModelSuccess: PropTypes.func.isRequired,

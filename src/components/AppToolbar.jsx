@@ -29,20 +29,20 @@ class AppToolbar extends React.Component {
     return (
       <div className='app-toolbar'>
         <div className='start'>
-          <button className='app-toolbar-item'>
-                        AP-GENERATOR
+          <button type='button' className='app-toolbar-item'>
+            {'AP-GENERATOR'}
           </button>
         </div>
         <div className='end'>
-          <button className='app-toolbar-item' onClick={this.onExportProject}>
+          <button type='button' className='app-toolbar-item' onClick={this.onExportProject}>
             <span>{'Export to file'}</span>
             <i className={'fas fa-save'} />
           </button>
-          <button className='app-toolbar-item'>
-                        Sign In
+          <button type='button' className='app-toolbar-item'>
+            {'Sign In'}
           </button>
-          <button className='app-toolbar-item'>
-                        Sign up
+          <button type='button' className='app-toolbar-item'>
+            {'Sign up'}
           </button>
         </div>
       </div>

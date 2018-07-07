@@ -86,6 +86,7 @@ class DatabaseEditorCollection extends React.Component {
             onChange={this.onChangeCollection} />
           <div className='input-group-append'>
             <button
+              type='button'
               className={`btn btn-danger`}
               onClick={this.onDeleteCollection}>
               {'Delete collection'}
@@ -104,6 +105,7 @@ class DatabaseEditorCollection extends React.Component {
             onChange={this.onNewFieldChange} />
           <div className='input-group-append'>
             <button
+              type='button'
               className={`btn btn-${addFieldDisabled ? 'default' : 'success'}`}
               disabled={addFieldDisabled}
               onClick={this.onAddField}>

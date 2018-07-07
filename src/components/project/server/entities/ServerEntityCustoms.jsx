@@ -65,17 +65,15 @@ class ServerEntityCustoms extends React.Component {
       <div className='server-entity-customs'>
         <h5>{`Custom Fields (${this.props.entityCustoms.length + this.props.parentCustoms.length})`}</h5>
         { this.props.parentCustoms.length
-          ? <div>
-            <h6>{`Parent custom Fields (${this.props.parentCustoms.length})`}</h6>
-            { this.props.parentCustoms.map(this.buildParent) }
-          </div>
-          : null }
+          ? [
+            <h6 key='title'>{`Parent custom Fields (${this.props.parentCustoms.length})`}</h6>,
+            this.props.parentCustoms.map(this.buildParent)
+          ] : null }
         { this.props.entityCustoms.length
-          ? <div>
-            <h6>{`Own custom Fields (${this.props.entityCustoms.length})`}</h6>
-            { this.props.entityCustoms.map(this.buildCustom) }
-          </div>
-          : null }
+          ? [
+            <h6 key='title'>{`Own custom Fields (${this.props.entityCustoms.length})`}</h6>,
+            this.props.entityCustoms.map(this.buildCustom)
+          ] : null }
         <div className='input-group mb-3'>
           <input
             type='text'
@@ -85,6 +83,7 @@ class ServerEntityCustoms extends React.Component {
             onChange={this.onNewCustomChange} />
           <div className='input-group-append'>
             <button
+              type='button'
               className={`btn btn-${addCustomDisabled ? 'default' : 'success'}`}
               disabled={addCustomDisabled}
               onClick={this.onCreateCustom}>

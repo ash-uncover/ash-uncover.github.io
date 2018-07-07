@@ -35,22 +35,22 @@ class AppRoot extends React.Component {
   /* RENDERING */
 
   renderError () {
-    return <div>Error</div>
+    return <div>{'Error'}</div>
   }
 
   renderLoading () {
-    return <div>Loading</div>
+    return <div>{'Loading'}</div>
   }
 
   render () {
     if (this.props.dataTypesLoadingError ||
-            this.props.dataModulesLoadingError ||
-            this.props.dataSampleLoadingError) {
+        this.props.dataModulesLoadingError ||
+        this.props.dataSampleLoadingError) {
       return this.renderError()
     }
     if (!this.props.dataTypesLoaded ||
-            !this.props.dataModulesLoaded ||
-            !this.props.dataSampleLoaded) {
+        !this.props.dataModulesLoaded ||
+        !this.props.dataSampleLoaded) {
       return this.renderLoading()
     }
     return (
