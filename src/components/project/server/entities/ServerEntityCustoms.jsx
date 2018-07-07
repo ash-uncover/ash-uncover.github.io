@@ -60,7 +60,6 @@ class ServerEntityCustoms extends React.Component {
   }
 
   render () {
-    console.log(this.props)
     const addCustomDisabled = !this.state.newCustom || !this.state.newCustomValid
     return (
       <div className='server-entity-customs'>

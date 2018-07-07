@@ -60,3 +60,8 @@ ActionRegistry.register('RMV_SERVER_ENTITY_FIELD', ['entityId', 'fieldId'])
 ActionRegistry.register('CREATE_SERVER_ENTITY_CUSTOM', ['entityId', 'customId'])
 ActionRegistry.register('UPDATE_SERVER_ENTITY_CUSTOM', ['entityId', 'customId', 'custom'])
 ActionRegistry.register('DELETE_SERVER_ENTITY_CUSTOM', ['entityId', 'customId'])
+
+// model - server - endpoints
+ActionRegistry.register('CREATE_SERVER_ENDPOINT', ['endpointId'])
+ActionRegistry.register('UPDATE_SERVER_ENDPOINT', ['endpointId', 'endpoint'])
+ActionRegistry.register('DELETE_SERVER_ENDPOINT', ['endpointId'])

@@ -6,10 +6,10 @@ export class StateHelper {
   /* DATA TYPES */
 
   getDataTypes (state) {
-    return state.data.types
+    return state.data.types.sort((t1, t2) => t1.id.localeCompare(t2.id))
   }
   getDataTypeIds (state) {
-    return this.getDataTypes(state).map(t => t.id)
+    return this.getDataTypes(state).map((t) => t.id)
   }
 
   /* DATABASE */
@@ -17,16 +17,16 @@ export class StateHelper {
   /* TYPES */
 
   getTypes (state) {
-    return state.model.project.database.types
+    return state.model.project.database.types.sort((t1, t2) => t1.id.localeCompare(t2.id))
   }
   getTypeIds (state) {
     return this.getTypes(state).map(t => t.id)
   }
   getType (state, typeId) {
-    return state.model.project.database.types.find(t => t.id === typeId)
+    return this.getTypes(state).find(t => t.id === typeId)
   }
   getTypeIndex (state, typeId) {
-    return state.model.project.database.types.findIndex(t => t.id === typeId)
+    return this.getTypes(state).findIndex(t => t.id === typeId)
   }
 
   /* TYPE VALUES */
@@ -38,7 +38,7 @@ export class StateHelper {
   /* COLLECTIONS */
 
   getCollections (state) {
-    return state.model.project.database.collections
+    return state.model.project.database.collections.sort((c1, c2) => c1.id.localeCompare(c2.id))
   }
   getCollectionIds (state) {
     return this.getCollections(state).map(c => c.id)
@@ -53,7 +53,7 @@ export class StateHelper {
   /* COLLECTION FIELDS */
 
   getCollectionFields (state, collectionId) {
-    return this.getCollection(state, collectionId).fields
+    return this.getCollection(state, collectionId).fields.sort((f1, f2) => f1.id.localeCompare(f2.id))
   }
   getCollectionFieldIds (state, collectionId) {
     return this.getCollectionFields(state, collectionId).map(f => f.id)
@@ -70,7 +70,7 @@ export class StateHelper {
   /* ENTITIES */
 
   getEntities (state) {
-    return state.model.project.server.entities
+    return state.model.project.server.entities.sort((e1, e2) => e1.id.localeCompare(e2.id))
   }
   getEntityIds (state) {
     return this.getEntities(state).map(e => e.id)
@@ -96,20 +96,22 @@ export class StateHelper {
   /* ENTITY EXTENDS */
 
   getEntityExtends (state, entityId) {
-    return this.getEntity(state, entityId).extends || []
+    const entity = this.getEntity(state, entityId)
+    return entity.extends.sort((e1, e2) => e1.localeCompare(e2))
   }
 
   /* ENTITY EXTENDS */
 
   getEntityFields (state, entityId) {
-    return this.getEntity(state, entityId).fields || []
+    const entity = this.getEntity(state, entityId)
+    return entity.fields.sort((f1, f2) => f1.localeCompare(f2))
   }
 
   /* ENTITY CUSTOMS */
 
   getEntityCustoms (state, entityId) {
     const entity = this.getEntity(state, entityId)
-    return entity.customs
+    return entity.customs.sort((c1, c2) => c1.id.localeCompare(c2.id))
   }
   getEntityCustomIds (state, entityId) {
     const customs = this.getEntityCustoms(state, entityId)
