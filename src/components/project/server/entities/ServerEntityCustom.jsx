@@ -7,7 +7,11 @@ class ServerEntityCustom extends React.Component {
   constructor () {
     super(...arguments)
 
-    this.state = {}
+    this.state = {
+      customId: this.props.customId,
+      customType: this.props.customType,
+      customIdValid: true
+    }
 
     this.onChangeCustomId = this.onChangeCustomId.bind(this)
     this.onChangeCustomType = this.onChangeCustomType.bind(this)
@@ -17,13 +21,12 @@ class ServerEntityCustom extends React.Component {
 
   /* LIFECYCLE */
 
-  static getDerivedStateFromProps (props, state) {
-    console.log('getDerivedStateFromProps')
-    return {
+  componentWillReceiveProps (props) {
+    this.setState({
       customId: props.customId,
       customType: props.customType,
       customIdValid: true
-    }
+    })
   }
 
   /* VIEW CALBACKS */
@@ -31,9 +34,6 @@ class ServerEntityCustom extends React.Component {
   onChangeCustomId (event) {
     const customId = event.target.value
     const customIdValid = Boolean(customId) && this.props.idRestrictions.indexOf(customId) === -1
-    console.log(this.props)
-    console.log(customId)
-    console.log(customIdValid)
     this.setState({ customId, customIdValid })
     if (customIdValid) {
       this.props.onUpdate({
