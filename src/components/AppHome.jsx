@@ -76,8 +76,8 @@ class AppHome extends React.Component {
             id='import-project'
             ref={(c) => { this.fileInput = c }}
             type='file'
-            onChange={this.onImportProject}
-            accept={['*.json']} />
+            accept={['*.json']}
+            onChange={this.onImportProject} />
         </span>
         <button type='button' className='app-home-item' onClick={this.onLoadSample}>
           <i className='icon fas fa-file-upload' />

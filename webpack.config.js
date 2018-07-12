@@ -9,7 +9,7 @@ const paths = {
 
 module.exports = {
 
-  entry: path.join(paths.SRC, 'index.js'),
+  entry: path.join(paths.SRC, 'index.jsx'),
 
   output: {
     path: paths.DIST,

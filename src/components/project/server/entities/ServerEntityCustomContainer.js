@@ -15,7 +15,7 @@ export const mapStateToProps = (state, ownProps) => {
     customId,
     customType: custom.type,
 
-    idRestrictions: [],
+    idRestrictions: HelperRegistry.State.getEntityEffectiveFields(state, entityId),
     typeRestrictions: []
       .concat(HelperRegistry.State.getDataTypeIds(state))
       .concat(HelperRegistry.State.getTypeIds(state))
