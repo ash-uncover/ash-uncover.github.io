@@ -2,6 +2,7 @@ import ActionRegistry from 'core/ActionRegistry'
 
 export const getDefaultState = () => ({
   router: {
+    initial: true,
     currentUrl: '/'
   }
 })
@@ -12,6 +13,7 @@ const reducer = (state = getDefaultState(), action) => {
   switch (action.type) {
     case ActionRegistry.APP_NAVIGATE:
       newState.router.currentUrl = action.args.url
+      newState.router.initial = false
       return newState
 
     default:

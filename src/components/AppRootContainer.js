@@ -6,6 +6,7 @@ import HelperRegistry from '../core/HelperRegistry'
 import AppRoot from 'components/AppRoot'
 
 export const mapStateToProps = (state, ownProps, history) => {
+  const url = state.app.router.initial ? ownProps.location.pathname : state.app.router.currentUrl
   const props = {
     dataTypesLoaded: state.data.typesLoaded,
     dataTypesLoading: state.data.typesLoading,
@@ -19,7 +20,7 @@ export const mapStateToProps = (state, ownProps, history) => {
     dataSampleLoading: state.data.sampleLoading,
     dataSampleLoadingError: state.data.sampleLoadingError,
 
-    url: state.app.router.currentUrl
+    url
   }
   return props
 }

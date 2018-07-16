@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import AppToolbar from 'components/AppToolbar'
+import AppTest from 'components/AppTest'
 import AppHomeContainer from 'components/AppHomeContainer'
 import Project from './project/Project'
 
@@ -21,6 +22,9 @@ class App extends React.Component {
             </Route>
             <Route path='/project'>
               <Project />
+            </Route>
+            <Route exact path='/test'>
+              <AppTest />
             </Route>
           </Switch>
         </div>

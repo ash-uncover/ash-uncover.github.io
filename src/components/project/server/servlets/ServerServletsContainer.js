@@ -3,22 +3,19 @@ import { connect } from 'react-redux'
 import ActionRegistry from 'core/ActionRegistry'
 import HelperRegistry from 'core/HelperRegistry'
 
-import ServerEndpoints from './ServerEndpoints'
+import ServerServlets from './ServerServlets'
 
 export const mapStateToProps = (state, ownProps) => {
   const props = {
-    endpoints: HelperRegistry.State.getEndpointIds(state)
+    servlets: HelperRegistry.State.getServletServletIds(state)
   }
   return props
 }
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onAddEndpoint: (id) => {
-      dispatch(ActionRegistry.createServerEndpoint(id))
-    },
-    onDeleteEndpoint: (id) => {
-      dispatch(ActionRegistry.deleteServerEndpoint(id))
+    onCreateServlet: (id) => {
+      dispatch(ActionRegistry.createServerServlet(id))
     }
   }
 }
@@ -26,4 +23,4 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ServerEndpoints)
+)(ServerServlets)
