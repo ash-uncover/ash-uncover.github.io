@@ -151,6 +151,21 @@ export class StateHelper {
         .concat(this.getEntityHeritedCustoms(state, extend))
     }, [])
   }
+
+  /* SERVLETS */
+
+  getServlets (state) {
+    return state.model.project.server.servlets.sort((s1, s2) => s1.id.localeCompare(s2.id))
+  }
+  getServletIds (state) {
+    return this.getEntities(state).map(s => s.id)
+  }
+  getServlet (state, servletId) {
+    return this.getServlets(state).find(s => s.id === servletId)
+  }
+  getServletIndex (state, servletId) {
+    return this.getServlets(state).findIndex(s => s.id === servletId)
+  }
 }
 
 const Helper = new StateHelper()

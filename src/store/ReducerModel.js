@@ -4,6 +4,7 @@ import HelperRegistry from 'core/HelperRegistry'
 export const getDefaultState = () => ({
   loading: false,
   loadingError: null,
+  projectOpened: false,
   project: {
     name: 'New Project',
     github: {
@@ -72,6 +73,11 @@ const reducer = (state = getDefaultState(), action) => {
 
     case ActionRegistry.USE_SAMPLE:
       newState.project = action.args.sample
+      newState.projectOpened = true
+      return newState
+
+    case ActionRegistry.NEW_PROJECT:
+      newState.projectOpened = true
       return newState
 
     case ActionRegistry.LOAD_MODEL_REQUEST:
@@ -82,6 +88,7 @@ const reducer = (state = getDefaultState(), action) => {
     case ActionRegistry.LOAD_MODEL_SUCCESS:
       newState.loading = false
       newState.project = action.args.model
+      newState.projectOpened = true
       return newState
 
     case ActionRegistry.LOAD_MODEL_FAILURE:

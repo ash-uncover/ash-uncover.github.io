@@ -11,20 +11,31 @@ class AppTest extends React.Component {
     return (
       <div className='app-test'>
         <div>
-          <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
-          <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
-          <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
+          <span className='cube-span cube-1-1'>
+            <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
+          </span>
+          <span className='cube-span cube-1-2'>
+            <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
+          </span>
         </div>
         <div>
-          <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
-          <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
-          <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
-          <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
+          <span className='cube-span cube-2-1'>
+            <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
+          </span>
+          <span className='cube-span cube-2-2'>
+            <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
+          </span>
+          <span className='cube-span cube-2-3'>
+            <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
+          </span>
         </div>
         <div>
-          <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
-          <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
-          <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
+          <span className='cube-span cube-3-1'>
+            <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
+          </span>
+          <span className='cube-span cube-3-2'>
+            <Cube colorFaceTop='Teal' colorFaceLeft='Orange' colorFaceRight='Purple' />
+          </span>
         </div>
       </div>
     )

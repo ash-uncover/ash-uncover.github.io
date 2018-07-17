@@ -6,8 +6,8 @@ import ServerServletContainer from './ServerServletContainer'
 import './_server-servlets.scss'
 
 class ServerServlets extends React.Component {
-  constructor (...args) {
-    super(args)
+  constructor () {
+    super(...arguments)
 
     this.buildServlet = this.buildServlet.bind(this)
   }

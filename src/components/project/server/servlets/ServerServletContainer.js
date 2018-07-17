@@ -11,7 +11,7 @@ export const mapStateToProps = (state, ownProps) => {
 
   const props = {
     servletId,
-    servletColle  ctionId: servlet.collectionId
+    servletCollectionId: servlet.collectionId
   }
   return props
 }

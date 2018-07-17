@@ -13,7 +13,7 @@ class ServerMenu extends React.Component {
     this.onClickEntities = this.onClickEntities.bind(this)
     this.getEntityClicker = this.getEntityClicker.bind(this)
     this.onClickEntity = this.onClickEntity.bind(this)
-    this.onClickEndpoints = this.onClickEndpoints.bind(this)
+    this.onClickServlets = this.onClickServlets.bind(this)
     this.buildEntitiesItems = this.buildEntitiesItems.bind(this)
   }
 
@@ -21,7 +21,7 @@ class ServerMenu extends React.Component {
     return [
       { id: 'settings', name: 'Settings', onClick: this.onClickSettings },
       { id: 'entities', name: 'Entities', onClick: this.onClickEntities, items: this.props.entities.map(this.buildEntitiesItems) },
-      { id: 'endpoints', name: 'Endpoints', onClick: this.onClickEndpoints }
+      { id: 'servlets', name: 'Servlets', onClick: this.onClickServlets }
     ]
   }
 
@@ -45,8 +45,8 @@ class ServerMenu extends React.Component {
     this.props.onNavigate('/project/server/entities/' + entityId)
   }
 
-  onClickEndpoints () {
-    this.props.onNavigate('/project/server/endpoints')
+  onClickServlets () {
+    this.props.onNavigate('/project/server/servlets')
   }
 
   buildEntitiesItems (entity) {

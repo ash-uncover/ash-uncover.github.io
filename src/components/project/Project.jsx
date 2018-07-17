@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Switch, Route } from 'react-router-dom'
 
 import ProjectMenu from './ProjectMenu'
@@ -18,6 +19,13 @@ const MENU_ITEMS = {
 }
 
 class Project extends React.Component {
+  constructor () {
+    super(...arguments)
+
+    if (!this.props.projectOpened) {
+      this.props.onBack()
+    }
+  }
   /* RENDERING */
 
   render () {
@@ -46,9 +54,13 @@ class Project extends React.Component {
 }
 
 Project.propTypes = {
+  projectOpened: PropTypes.bool,
+
+  onBack: PropTypes.func.isRequired
 }
 
 Project.defaultProps = {
+  projectOpened: false
 }
 
 export default Project

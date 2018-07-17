@@ -19,6 +19,31 @@ $toolbar-height: 3rem;
             display: inline-block;
             height: 75px;
         }
+
+        .cube-span  {
+            display: inline-block;
+        }
+        .cube-1-1 {
+            transform: translateX(-50px) translateY(-30px);
+        }
+        .cube-1-2 {
+            transform: translateX(50px) translateY(-30px);
+        }
+        .cube-2-1 {
+            transform: translateX(-80px) translateY(0);
+        }
+        .cube-2-2 {
+            transform: translateX(0) translateY(0);
+        }
+        .cube-2-3 {
+            transform: translateX(80px) translateY(0);
+        }
+        .cube-3-1 {
+            transform: translateX(-50px) translateY(30px);
+        }
+        .cube-3-2 {
+            transform: translateX(50px) translateY(30px);
+        }
     }
 
     &:before {

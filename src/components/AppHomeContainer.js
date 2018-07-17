@@ -28,8 +28,10 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(ActionRegistry.loadModelFailure(error))
     },
     onUseSample: () => {
-      console.log(sampleGetter())
       dispatch(ActionRegistry.useSample(sampleGetter()))
+    },
+    onNewProject: () => {
+      dispatch(ActionRegistry.newProject())
     }
   }
 }

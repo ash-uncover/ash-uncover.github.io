@@ -14,6 +14,7 @@ ActionRegistry.register('DATA_LOAD_SAMPLE_SUCCESS', ['sample'])
 ActionRegistry.register('DATA_LOAD_SAMPLE_FAILURE', ['error'])
 
 ActionRegistry.register('USE_SAMPLE', ['sample'])
+ActionRegistry.register('NEW_PROJECT', ['project'])
 
 // app navigation
 ActionRegistry.register('APP_NAVIGATE', ['url'])

@@ -19,6 +19,7 @@ class AppHome extends React.Component {
   /* RENDERING */
 
   onNewProject () {
+    this.props.onNewProject()
     this.props.onNavigate('/project/settings')
   }
   onImportProject (event) {
@@ -95,6 +96,7 @@ AppHome.propTypes = {
   onNavigate: PropTypes.func.isRequired,
 
   onUseSample: PropTypes.func.isRequired,
+  onNewProject: PropTypes.func.isRequired,
 
   onLoadModelRequest: PropTypes.func.isRequired,
   onLoadModelSuccess: PropTypes.func.isRequired,

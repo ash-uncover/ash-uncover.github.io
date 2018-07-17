@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import AppToolbar from 'components/AppToolbar'
 import AppTest from 'components/AppTest'
 import AppHomeContainer from 'components/AppHomeContainer'
-import Project from './project/Project'
+import ProjectContainer from './project/ProjectContainer'
 
 import './_app.scss'
 
@@ -21,7 +21,7 @@ class App extends React.Component {
               <AppHomeContainer />
             </Route>
             <Route path='/project'>
-              <Project />
+              <ProjectContainer />
             </Route>
             <Route exact path='/test'>
               <AppTest />
