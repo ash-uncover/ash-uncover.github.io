@@ -4,8 +4,10 @@ import ActionRegistry from 'core/ActionRegistry'
 import Project from './Project'
 
 export const mapStateToProps = (state, ownProps) => {
+  console.log(this)
   const props = {
-    projectOpened: state.model.projectOpened
+    projectOpened: state.model.projectOpened,
+    url: state.app.router.currentUrl
   }
   return props
 }

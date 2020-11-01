@@ -14,14 +14,28 @@ class ServerMenu extends React.Component {
     this.getEntityClicker = this.getEntityClicker.bind(this)
     this.onClickEntity = this.onClickEntity.bind(this)
     this.onClickServlets = this.onClickServlets.bind(this)
+
     this.buildEntitiesItems = this.buildEntitiesItems.bind(this)
+    this.buildServletsItems = this.buildServletsItems.bind(this)
   }
 
   get items () {
     return [
-      { id: 'settings', name: 'Settings', onClick: this.onClickSettings },
-      { id: 'entities', name: 'Entities', onClick: this.onClickEntities, items: this.props.entities.map(this.buildEntitiesItems) },
-      { id: 'servlets', name: 'Servlets', onClick: this.onClickServlets }
+      {
+        id: 'settings',
+        name: 'Settings',
+        onClick: this.onClickSettings
+      }, {
+        id: 'entities',
+        name: 'Entities',
+        onClick: this.onClickEntities,
+        items: this.props.entities.map(this.buildEntitiesItems)
+      }, {
+        id: 'servlets',
+        name: 'Servlets',
+        onClick: this.onClickServlets,
+        items: this.props.servlets.map(this.buildServletsItems)
+      }
     ]
   }
 
@@ -45,12 +59,26 @@ class ServerMenu extends React.Component {
     this.props.onNavigate('/project/server/entities/' + entityId)
   }
 
+  buildEntitiesItems (entity) {
+    return {id: entity, name: entity, onClick: this.getEntityClicker(entity)}
+  }
+
   onClickServlets () {
     this.props.onNavigate('/project/server/servlets')
   }
 
-  buildEntitiesItems (entity) {
-    return {id: entity, name: entity, onClick: this.getEntityClicker(entity)}
+  getServletClicker (servletId) {
+    return () => {
+      this.onClickServlet(servletId)
+    }
+  }
+
+  onClickServlet (servletId) {
+    this.props.onNavigate('/project/server/servlets/' + servletId)
+  }
+
+  buildServletsItems (servlet) {
+    return {id: servlet, name: servlet, onClick: this.getServletClicker(servlet)}
   }
 
   /* RENDERING */
@@ -71,12 +99,14 @@ class ServerMenu extends React.Component {
 
 ServerMenu.propTypes = {
   entities: PropTypes.arrayOf(PropTypes.string.isRequired),
+  servlets: PropTypes.arrayOf(PropTypes.string.isRequired),
 
   onNavigate: PropTypes.func.isRequired
 }
 
 ServerMenu.defaultProps = {
-  entities: []
+  entities: [],
+  servlets: []
 }
 
 export default ServerMenu
