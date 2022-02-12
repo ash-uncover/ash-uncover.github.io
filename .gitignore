@@ -1,8 +1,5 @@
-# Node files
-npm-debug.log*
-node_modules/
+/node_modules/
+/public/build/
 
-# Webpack files
-
-# VSCODE files
-.vscode
+.DS_Store
+**/*.ani

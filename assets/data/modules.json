@@ -1,5 +1,0 @@
-[
-    { "id": "AUTH", "name": "Authentication" },
-    { "id": "MAIL", "name": "Email" },
-    { "id": "GMAP", "name": "Google maps" }
-]
